@@ -56,7 +56,7 @@ public class VentanaMenu extends JFrame{
     private void iniciarComponentes() throws IOException, ParseException
     {
         //Se carga la imagen del encabezado
-        imagenEncabezado = new File("G:\\Mi unidad\\Semestres\\SemestreIII\\POE\\MiniProyecto1\\CasinoUnivalle\\src\\imagenes\\casino.png");
+        imagenEncabezado = new File("C:\\Users\\Juan\\Documents\\NetBeansProjects\\CasinoUnivalle\\src\\imagenes\\casino.png");
         BufferedImage bufferedImagenEncabezado = ImageIO.read(imagenEncabezado);
         ImageIcon iconEncabezado = new ImageIcon(bufferedImagenEncabezado);
         
