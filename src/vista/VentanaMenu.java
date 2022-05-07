@@ -60,8 +60,14 @@ public class VentanaMenu extends JFrame{
     
     private void iniciarComponentes() throws IOException, ParseException
     {
+        //Obtenemos la ruta absoluta de "CasinoUnivalle"
+        String rutaArchivo = new File("").getAbsolutePath();
+        
+        //Concatenamos la ruta absoluta de "CasinoUnivalle" con la ruta de casino.png
+        String casinoUnivalle = rutaArchivo.concat("\\src\\imagenes\\casino.png");
+        
         //Se carga la imagen del encabezado
-        imagenEncabezado = new File("C:\\Users\\Juan\\Documents\\NetBeansProjects\\CasinoUnivalle\\src\\imagenes\\casino.png");
+        imagenEncabezado = new File(casinoUnivalle);
         BufferedImage bufferedImagenEncabezado = ImageIO.read(imagenEncabezado);
         ImageIcon iconEncabezado = new ImageIcon(bufferedImagenEncabezado);
         
