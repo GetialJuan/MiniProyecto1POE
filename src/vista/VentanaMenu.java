@@ -6,6 +6,8 @@ package vista;
 
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -19,6 +21,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -35,7 +38,7 @@ public class VentanaMenu extends JFrame{
     private JLabel lblNRondas;
     private JLabel lblNombre1;
     private JLabel lblNombre2;
-    private JComboBox cmbNJugadores;
+    private JComboBox cmbModoDeJuego;
     private JPanel pnlNRondas;
     private JPanel pnlModoDeJuego;
     private JPanel pnlNombres;
@@ -67,9 +70,10 @@ public class VentanaMenu extends JFrame{
         encabezado.setIcon(iconEncabezado);
         
         //Se crea la lista de opciones del n jugadores
-        cmbNJugadores = new JComboBox<String>();
-        cmbNJugadores.addItem("Jugador vs CPU");
-        cmbNJugadores.addItem("Jugador vs Jugador");
+        cmbModoDeJuego = new JComboBox<String>();
+        cmbModoDeJuego.addItem("Jugador vs CPU");
+        cmbModoDeJuego.addItem("Jugador vs Jugador");
+        cmbModoDeJuego.addActionListener(new ManejadorDeEventos());
         
         //Se cre la seccion de Mdodo de Juego
         lblModoDeJuego = new JLabel("Seleccione el modo de juego: ");
@@ -78,7 +82,7 @@ public class VentanaMenu extends JFrame{
         pnlModoDeJuego = new JPanel();
         pnlModoDeJuego.setLayout(new GridLayout(1,2));
         pnlModoDeJuego.add(lblModoDeJuego);
-        pnlModoDeJuego.add(cmbNJugadores);
+        pnlModoDeJuego.add(cmbModoDeJuego);
         
         //Se cre la seccon de n Rondas
         pnlNRondas = new JPanel();
@@ -96,6 +100,7 @@ public class VentanaMenu extends JFrame{
         lblNombre2.setHorizontalAlignment(SwingConstants.CENTER);
         txtNombre1 = new JTextField("Jugador 1");
         txtNombre2 = new JTextField("CPU");
+        txtNombre2.setEnabled(false);
         
         pnlNombres = new JPanel();
         pnlNombres.setLayout(new GridLayout(2,2));
@@ -106,6 +111,7 @@ public class VentanaMenu extends JFrame{
         
         //Se instancia el btnInciarjugar
         btnIniciarJuego = new JButton("Iniciar Juego");
+        btnIniciarJuego.addMouseListener(new ManejadorDeEventos());
         
         //Se crea el contenedro principal
         contenedorPrincipal = getContentPane();
@@ -118,32 +124,67 @@ public class VentanaMenu extends JFrame{
         
     }
     
-    private class ManejadorDeEventos implements MouseListener
+    private class ManejadorDeEventos implements MouseListener, ActionListener
     {
+        public void habilitarNombre2()
+        {
+            switch (cmbModoDeJuego.getSelectedItem().toString()) 
+            {
+                case "Solitario":
+                    txtNombre2.setEnabled(false);
+                    break;
+                case "Jugador vs Jugador":
+                    txtNombre2.setEnabled(true);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            //if(cmbModoDeJuego.getSelectedItem().toString() == "Solitario")
+                
+        }
 
         @Override
-        public void mouseClicked(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        public void mouseClicked(MouseEvent e) 
+        {
+            JOptionPane.showMessageDialog(null, "Se inicia el juego");
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (cmbModoDeJuego.getSelectedItem().toString()) 
+            {
+                case "Jugador vs CPU":
+                    txtNombre2.setEnabled(false);
+                    txtNombre2.setText("CPU");
+                    break;
+                case "Jugador vs Jugador":
+                    txtNombre2.setEnabled(true);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
         
     }
