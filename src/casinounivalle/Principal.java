@@ -13,7 +13,7 @@ import vista.VentanaMenu;
  * @author Juan
  */
 //sdsdsd
-public class CasinoUnivalle {
+public class Principal {
 
     /**
      * @param args the command line arguments
