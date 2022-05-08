@@ -5,11 +5,17 @@
 package vista;
 
 import java.awt.Container;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import logica.Casino;
 
 /**
  *
@@ -17,6 +23,9 @@ import javax.swing.JPanel;
  */
 public class VentanaJuego extends JFrame 
 {
+    //Casino
+    private Casino casino;
+    
     //JFrames
     private JFrame frame = new JFrame();
     
@@ -47,12 +56,21 @@ public class VentanaJuego extends JFrame
         //JPanels de tercer grado
     private JPanel parteInferiorJugador1, parteInferiorJugador2, parteSuperior2;
     
+    //Files
+    private File imagenEncabezado;
+    private File imagenDado1;
+    private File imagenDado2;
+    private File imagenDado3;
+    private File imagenDado4;
+    private File imagenDado5;
+    private File imagenDado6;
+    
     //Container
     private Container contenedorPrincipal;
 
-    public VentanaJuego()
+    public VentanaJuego(Casino casinoInput) throws IOException
     {
-        iniciarComponentes();
+        iniciarComponentes(casinoInput);
         frame.setSize(700,800);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
@@ -60,19 +78,32 @@ public class VentanaJuego extends JFrame
         frame.setTitle("CasinoUnivalle");
     }
     
-    private void iniciarComponentes()
+    private void iniciarComponentes(Casino casinoInput) throws IOException
     {
         //Obtenemos la ruta absoluta
         String rutaArchivo = new File("").getAbsolutePath();
         
         //Concatenamos la ruta absoluta de "CasinoUnivalle" con la ruta de todos los .png a utilizar
-        String encabezadoCasino = rutaArchivo.concat("\\src\\imagenes\\casino.png");
-        String dado1 = rutaArchivo.concat("\\src\\imagenes\\dado1.png");
-        String dado2 = rutaArchivo.concat("\\src\\imagenes\\dado2.png");
-        String dado3 = rutaArchivo.concat("\\src\\imagenes\\dado3.png");
-        String dado4 = rutaArchivo.concat("\\src\\imagenes\\dado4.png");
-        String dado5 = rutaArchivo.concat("\\src\\imagenes\\dado5.png");
-        String dado6 = rutaArchivo.concat("\\src\\imagenes\\dado6.png");
+        String encabezadoCasinoRuta = rutaArchivo.concat("\\src\\imagenes\\casino.png");
+        String dado1Ruta = rutaArchivo.concat("\\src\\imagenes\\dado1.png");
+        String dado2Ruta = rutaArchivo.concat("\\src\\imagenes\\dado2.png");
+        String dado3Ruta = rutaArchivo.concat("\\src\\imagenes\\dado3.png");
+        String dado4Ruta = rutaArchivo.concat("\\src\\imagenes\\dado4.png");
+        String dado5Ruta = rutaArchivo.concat("\\src\\imagenes\\dado5.png");
+        String dado6Ruta = rutaArchivo.concat("\\src\\imagenes\\dado6.png");
+        
+        //Parte Superior
+        //Se carga la imagen del encabezado
+        imagenEncabezado = new File(encabezadoCasinoRuta);
+        BufferedImage bufferedImagenEncabezado = ImageIO.read(imagenEncabezado);
+        ImageIcon iconEncabezado = new ImageIcon(bufferedImagenEncabezado);
+        encabezado = new JLabel();
+        
+        //Se agrega la imagen del encabezado
+        encabezado.setIcon(iconEncabezado);
+        
+        
+        
         
         
     }

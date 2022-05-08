@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -204,11 +206,18 @@ public class VentanaMenu extends JFrame
                 JOptionPane.showMessageDialog(null, "El juego ha iniciado");
                 
                 frame.dispose();
-                VentanaJuego VentanaDeJuego = new VentanaJuego();
+                if(casino == null)
+                {
+                    casino = new Casino(txtNombre1.getText(), 
+                            txtNombre2.getText());
+                }
                 
-                
-            
-            //Si cmbModoDeJuego es presionado
+                try {
+                    VentanaJuego ventanaJuego = new VentanaJuego(casino); 
+                } catch (IOException ex) {
+                    Logger.getLogger(VentanaMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //Si cmbModoDeJuego es presionado
             } else if (e.getSource() == cmbModoDeJuego){
                 switch (cmbModoDeJuego.getSelectedItem().toString()) 
                 {
