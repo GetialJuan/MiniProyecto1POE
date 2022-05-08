@@ -16,7 +16,6 @@ public class Ronda
     private int lanzamientosRealizadosJugador1;
     private int lanzamientosRealizadosJugador2;
     private int lanzamientosEmpatados;
-    private int lanzamientosARealizar;
     private String nombreJugador1;
     private String nombreJugador2;
     

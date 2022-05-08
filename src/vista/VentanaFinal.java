@@ -121,5 +121,9 @@ public class VentanaFinal extends JFrame
         contPrincipal.add(pnlOpcionesDeNuevaRonda);
     }
     
+    private class ventanaDeNombres extends JFrame
+    {
+        
+    }
     
 }
