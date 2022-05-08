@@ -25,6 +25,9 @@ import logica.Casino;
  */
 public class VentanaFinal extends JFrame 
 {
+    //JFrames
+    private JFrame frame = new JFrame();
+    
     //Casino
     private Casino casino;
     //Datos Ronda Finalizada
@@ -63,11 +66,11 @@ public class VentanaFinal extends JFrame
     {
         this.casino = casino;
         iniciarComponentes();
-        setSize(700,300);
-        setVisible(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("CasinoUnivalle");
+        frame.setSize(700,300);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("CasinoUnivalle");
     }
     
     private void iniciarComponentes()
@@ -76,12 +79,25 @@ public class VentanaFinal extends JFrame
         lblRondaActual = new JLabel("Ronda "+casino.getRondaActual()+"");
         lblRondaActual.setHorizontalAlignment(SwingConstants.CENTER);
         
-        lblJugadorVencedor = new JLabel("Ganador: ");
-        lblJugadorPerdedor = new JLabel("Perdedor");
-        lblPuntajeVencedor = new JLabel("Puntaje: ");
-        lblPuntajePerdedor = new JLabel("Puntaje: ");
-        lblCantidadDeLanzamientos = new JLabel("Lanzamientos realizados: ");
-        lblCantidadDeEmpates = new JLabel("Empates: ");
+        lblJugadorVencedor = new JLabel("Ganador: " + casino.getRondas().
+                get(casino.getRondaActual()).getGanador());
+        
+        lblJugadorPerdedor = new JLabel("Perdedor: " + casino.getRondas().
+                get(casino.getRondaActual()).getPerdedor());
+        
+        lblPuntajeVencedor = new JLabel("Puntaje: " + casino.getRondas().
+                get(casino.getRondaActual()).getPuntajeGanador());
+            
+        lblPuntajePerdedor = new JLabel("Puntaje: " + casino.getRondas().
+                get(casino.getRondaActual()).getPuntajePerdedor());
+        
+        lblCantidadDeLanzamientos = new JLabel("Lanzamientos realizados: " + 
+                (casino.getRondas().get(casino.getRondaActual()).
+                        getLanzamientosARealizar() + casino.getRondas().
+                    get(casino.getRondaActual()).getLanzamientosEmpatados()));
+        
+        lblCantidadDeEmpates = new JLabel("Empates: " + casino.getRondas().
+                    get(casino.getRondaActual()).getLanzamientosEmpatados());
         
         pnlEstadisticasDeRonda = new JPanel();
         pnlEstadisticasDeRonda.setLayout(new GridLayout(3,2));
@@ -96,9 +112,14 @@ public class VentanaFinal extends JFrame
         lblEstadisticasGenerales = new JLabel("Estadisticas Generales");
         lblEstadisticasGenerales.setHorizontalAlignment(SwingConstants.CENTER);
         
-        lblPuntajeRecord = new JLabel("Puntaje record: ");
-        lblJugadorConElRecord = new JLabel("Hecho por: ");
-        lblRondaDePuntajeRecord = new JLabel("En la ronda: ");
+        lblPuntajeRecord = new JLabel("Puntaje record: " + casino.getRondas().
+                get(casino.getRondaRecord()).getPuntajeGanador());
+        
+        lblJugadorConElRecord = new JLabel("Hecho por: " + casino.getRondas().
+                get(casino.getRondaRecord()).getGanador());
+        
+        lblRondaDePuntajeRecord = new JLabel("En la ronda: " + casino.
+                getRondaRecord());
         
         pnlEstadisticasGenerales = new JPanel();
         pnlEstadisticasGenerales.setLayout(new GridLayout(1,3));
@@ -128,6 +149,9 @@ public class VentanaFinal extends JFrame
         
         //Se agregan los listeners
         btnNuevaRondaConOtrosJugadores.addMouseListener(new ManejadorDeEventos());
+        
+        //Se añade al Frame
+        frame.add(contPrincipal);
     }
     
     private class ManejadorDeEventos implements MouseListener

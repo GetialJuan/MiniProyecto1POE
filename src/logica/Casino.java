@@ -121,4 +121,18 @@ public class Casino
         rondas.get(rondaActual).setLanzamientosARealizar(lanzamientosARealizar);
     }
     
+    public int getRondaRecord()
+    {
+        int puntajeRecord = 0;
+        int rondaRecord = 0;
+        for(int i = 0; i<rondas.size(); i++)
+        {
+            if(puntajeRecord < rondas.get(i).getPuntajeGanador())
+            {
+                rondaRecord = i;
+            }
+        }
+        
+        return rondaRecord;
+    }
 }

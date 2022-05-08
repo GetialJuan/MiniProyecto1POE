@@ -79,6 +79,42 @@ public class Ronda
         }
     }
     
+    public String getPerdedor()
+    {
+        if(puntajeJugador1 < puntajeJugador2)
+        {
+            return nombreJugador1;
+        }
+        else
+        {
+            return nombreJugador2;
+        }
+    }
+    
+    public int getPuntajeGanador()
+    {
+        if(puntajeJugador1 > puntajeJugador2)
+        {
+            return puntajeJugador1;
+        }
+        else
+        {
+            return puntajeJugador2;
+        }
+    }
+    
+    public int getPuntajePerdedor()
+    {
+        if(puntajeJugador1 < puntajeJugador2)
+        {
+            return puntajeJugador1;
+        }
+        else
+        {
+            return puntajeJugador2;
+        }
+    }
+    
     public void sumarPuntajeAJugador(int cualJugador, int puntajeASumar)
     {
         switch (cualJugador) {
