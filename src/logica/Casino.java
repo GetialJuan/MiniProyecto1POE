@@ -55,12 +55,14 @@ public class Casino
     }
     
     public void lanzarDados()
-    {
+    {   
         rondas.get(rondaActual).
                 añadirLanzamientoRealizadoAJugador(jugadorALanzar);
         
-        dado1 = (int) ((Math.random() * (7-1)) + 1);
-        dado2 = (int) ((Math.random() * (7-1)) + 1);
+        dado1 = (int) (Math.random() * (7-1)) + 1;
+        System.out.println(dado1);
+        dado2 = (int) (Math.random() * (7-1)) + 1;
+        System.out.println(dado2);
         
         switch (jugadorALanzar) 
         {
