@@ -31,6 +31,42 @@ public class Ronda
         this.nombreJugador1 = nombreJugador1;
         this.nombreJugador2 = nombreJugador2;
     }
+
+    public int getPuntajeJugador1() {
+        return puntajeJugador1;
+    }
+
+    public int getPuntajeJugador2() {
+        return puntajeJugador2;
+    }
+
+    public int getLanzamientosARealizar() {
+        return lanzamientosARealizar;
+    }
+
+    public int getLanzamientosRealizados() {
+        return lanzamientosRealizados;
+    }
+
+    public int getLanzamientosRealizadosJugador1() {
+        return lanzamientosRealizadosJugador1;
+    }
+
+    public int getLanzamientosRealizadosJugador2() {
+        return lanzamientosRealizadosJugador2;
+    }
+
+    public int getLanzamientosEmpatados() {
+        return lanzamientosEmpatados;
+    }
+
+    public String getNombreJugador1() {
+        return nombreJugador1;
+    }
+
+    public String getNombreJugador2() {
+        return nombreJugador2;
+    }
     
     public void sumarPuntajeAJugador(int cualJugador, int puntajeASumar)
     {
