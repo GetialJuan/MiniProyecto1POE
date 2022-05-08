@@ -178,28 +178,6 @@ public class VentanaJuego extends JFrame
             //Se agrega imagen
         lblDado2.setIcon(iconDado2);
         
-        //JugadorALanzar
-        
-        String jugadorALanzar;
-        switch (casino.getJugadorALanzar()) {
-            case 1:
-                jugadorALanzar = casino.getRondas().get(casino.
-                        getRondaActual()).getNombreJugador1();
-                break;
-            case 2:
-                jugadorALanzar = casino.getRondas().get(casino.
-                        getRondaActual()).getNombreJugador2();
-                break;
-            default:
-                throw new AssertionError();
-        }
-        lblJugadorALanzar = new JLabel ("Próximo jugador a lanzar: " + 
-                jugadorALanzar);
-        lblJugadorALanzar.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
-        lblJugadorALanzar.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        
-        
         //Parte Inferior
         
         //Parte izquierda
@@ -223,7 +201,7 @@ public class VentanaJuego extends JFrame
         
         //LanzarJugador1
         btnLanzarJugador1 = new JButton ("Lanzar");
-        btnLanzarJugador1.addMouseListener(new ManejadorDeEventos());
+        btnLanzarJugador1.addActionListener(new ManejadorDeEventos());
         btnLanzarJugador1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
         
         
@@ -248,8 +226,31 @@ public class VentanaJuego extends JFrame
         
         //LanzarJugador2
         btnLanzarJugador2 = new JButton ("Lanzar");
-        btnLanzarJugador2.addMouseListener(new ManejadorDeEventos());
+        btnLanzarJugador2.addActionListener(new ManejadorDeEventos());
         btnLanzarJugador2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+        
+        //JugadorALanzar
+        
+        String jugadorALanzar;
+        switch (casino.getJugadorALanzar()) {
+            case 1:
+                jugadorALanzar = casino.getRondas().get(casino.
+                        getRondaActual()).getNombreJugador1();
+                btnLanzarJugador2.setEnabled(false);
+                
+                break;
+            case 2:
+                jugadorALanzar = casino.getRondas().get(casino.
+                        getRondaActual()).getNombreJugador2();
+                btnLanzarJugador2.setEnabled(false);
+                break;
+            default:
+                throw new AssertionError();
+        }
+        lblJugadorALanzar = new JLabel ("Próximo jugador a lanzar: " + 
+                jugadorALanzar);
+        lblJugadorALanzar.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
+        lblJugadorALanzar.setHorizontalAlignment(SwingConstants.CENTER);
         
         
         //CONFIGURACIÓN JPANELS
@@ -309,12 +310,6 @@ public class VentanaJuego extends JFrame
         frame.add(contenedorPrincipal);
         
         
-                
-            
-        
-        
-        
-        
         
     }
     
@@ -323,6 +318,35 @@ public class VentanaJuego extends JFrame
         private int contadorLanzamientos = 0;
         @Override
         public void mouseClicked(MouseEvent e) {
+            
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            ///throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
+            k++;
+            
             if(e.getSource() == btnLanzarJugador1 || e.getSource() == btnLanzarJugador2)
             {
                 casino.lanzarDados();
@@ -387,34 +411,18 @@ public class VentanaJuego extends JFrame
                     VentanaFinal ventanaFinal = new VentanaFinal(casino);
                 }
                 
+                //Habilita y deshabilita los respectivos botones
+                if(e.getSource() == btnLanzarJugador1){
+                    btnLanzarJugador1.setEnabled(false);
+                    btnLanzarJugador2.setEnabled(true);
+                    
+                } else if (e.getSource() == btnLanzarJugador2){
+                    btnLanzarJugador1.setEnabled(true);
+                    btnLanzarJugador2.setEnabled(false);
+                }
+                
             }
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            ///throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
-            k++;
+            
         }
         
     }
