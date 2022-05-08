@@ -12,6 +12,7 @@ public class Ronda
 {
     private int puntajeJugador1;
     private int puntajeJugador2;
+    private int lanzamientosARealizar;
     private int lanzamientosRealizadosJugador1;
     private int lanzamientosRealizadosJugador2;
     private int lanzamientosEmpatados;
