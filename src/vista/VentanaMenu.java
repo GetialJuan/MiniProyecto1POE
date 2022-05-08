@@ -26,12 +26,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.text.MaskFormatter;
+import logica.Casino;
 
 /**
  *
  * @author Juan
  */
-public class VentanaMenu extends JFrame{
+public class VentanaMenu extends JFrame
+{
+    //casino
+    private Casino casino;
+    
     private JFrame frame = new JFrame();
     private Container contenedorPrincipal;
     private JLabel encabezado;
@@ -58,6 +63,17 @@ public class VentanaMenu extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("CasinoUnivalle");
         
+    }
+    
+    public VentanaMenu(Casino casino) throws IOException, ParseException
+    {
+        this.casino = casino;
+        iniciarComponentes();
+        frame.setSize(700,300);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("CasinoUnivalle");
     }
     
     private void iniciarComponentes() throws IOException, ParseException
