@@ -13,7 +13,7 @@ public class Ronda
     private int puntajeJugador1;
     private int puntajeJugador2;
     private int lanzamientosARealizar;
-    private int lanzamientosRealizados;
+    private int lanzamientosRestantes;
     private int lanzamientosRealizadosJugador1;
     private int lanzamientosRealizadosJugador2;
     private int lanzamientosEmpatados;
@@ -25,7 +25,6 @@ public class Ronda
         puntajeJugador1 = 0;
         puntajeJugador2 = 0;
         lanzamientosEmpatados = 0;
-        lanzamientosRealizados = 0;
         lanzamientosRealizadosJugador1 = 0;
         lanzamientosRealizadosJugador2 = 0;
         this.nombreJugador1 = nombreJugador1;
@@ -44,8 +43,8 @@ public class Ronda
         return lanzamientosARealizar;
     }
 
-    public int getLanzamientosRealizados() {
-        return lanzamientosRealizados;
+    public int getLanzamientosRestantes() {
+        return lanzamientosRestantes;
     }
 
     public int getLanzamientosRealizadosJugador1() {
@@ -83,7 +82,7 @@ public class Ronda
                 throw new AssertionError();
         }
         
-        añadirLanzamientoRealizado();
+        restarLanzamiento();
     }
     
     public void añadirLanzamientoEmpatado()
@@ -91,9 +90,9 @@ public class Ronda
         lanzamientosEmpatados += 1;
     }
     
-    public void añadirLanzamientoRealizado()
+    public void restarLanzamiento()
     {
-        lanzamientosRealizados += 1;
+        lanzamientosRestantes -= 1;
     }
     
     public void añadirLanzamientoRealizadoAJugador(int cualJugador)
@@ -111,7 +110,7 @@ public class Ronda
     
     public void invalidarLanzamientosPorEmpate()
     {
-        lanzamientosRealizados -= 1;
+        lanzamientosRestantes += 1;
         lanzamientosRealizadosJugador1 -= 1;
         lanzamientosRealizadosJugador2 -= 1;
     }
@@ -119,6 +118,7 @@ public class Ronda
     public void setLanzamientosARealizar(int lanzamientosARealizar)
     {
         this.lanzamientosARealizar = lanzamientosARealizar;
+        lanzamientosRestantes = lanzamientosARealizar;
     }
     
 }

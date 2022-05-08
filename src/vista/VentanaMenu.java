@@ -50,7 +50,7 @@ public class VentanaMenu extends JFrame
     private JPanel pnlNRondas;
     private JPanel pnlModoDeJuego;
     private JPanel pnlNombres;
-    private JFormattedTextField txtNRondas;
+    private JTextField txtNRondas;
     private JTextField txtNombre1;
     private JTextField txtNombre2;
     private JButton btnIniciarJuego;
@@ -115,7 +115,7 @@ public class VentanaMenu extends JFrame
         pnlNRondas.setLayout(new GridLayout(1,2));
         lblNRondas = new JLabel("Escriba el numero de rondas : ");
         lblNRondas.setHorizontalAlignment(SwingConstants.CENTER);
-        txtNRondas = new JFormattedTextField(new MaskFormatter("##"));
+        txtNRondas = new JTextField("0");
         pnlNRondas.add(lblNRondas);
         pnlNRondas.add(txtNRondas);
         

@@ -130,13 +130,18 @@ public class VentanaJuego extends JFrame
         lblJugadorGanador = new JLabel ("Jugador parcialmente ganador: ");
         
         //LanzamientosARealizar
-        lblLanzamientosARealizar = new JLabel("Lanzamientos a realizar: ");
+        lblLanzamientosARealizar = new JLabel("Lanzamientos a realizar: " + 
+                casino.getRondas().get(casino.getRondaActual()).
+                        getLanzamientosARealizar());
         
         //LanzamientosRealizados
-        lblLanzamientosRestantes = new JLabel("Lanzamientos restantes");
+        lblLanzamientosRestantes = new JLabel("Lanzamientos restantes: " + 
+                casino.getRondas().get(casino.getRondaActual()).getLanzamientosRestantes());
         
         //LanzamientosEmpates
-        lblLanzamientosEmpates = new JLabel ("Lanzamientso con empate: ");
+        lblLanzamientosEmpates = new JLabel ("Lanzamientos con empate: " + 
+                casino.getRondas().get(casino.getRondaActual()).
+                        getLanzamientosEmpatados());
         
         //Dados
         imagenDado1 = new File(dado1Ruta);
@@ -156,7 +161,20 @@ public class VentanaJuego extends JFrame
         lblDado2.setIcon(iconDado2);
         
         //JugadorALanzar
-        lblJugadorALanzar = new JLabel ("Próximo jugador a lanzar: ");
+        
+        String jugadorALanzar;
+        switch (casino.getJugadorALanzar()) {
+            case 1:
+                jugadorALanzar = casino.getNombreJugador1();
+                break;
+            case 2:
+                jugadorALanzar = casino.getNombreJugador2();
+                break;
+            default:
+                throw new AssertionError();
+        }
+        lblJugadorALanzar = new JLabel ("Próximo jugador a lanzar: " + 
+                jugadorALanzar);
         
         
         
@@ -164,13 +182,16 @@ public class VentanaJuego extends JFrame
         
         //Parte izquierda
         //NombreJugador1
-        lblNombreJugador1 = new JLabel ("Inserte NombreJugador1 aquí");
+        lblNombreJugador1 = new JLabel (casino.getNombreJugador1());
         
         //LanzamientosJugador1
-        lblLanzamientosJugador1 = new JLabel ("Inserte lanzamientos restantes Jugador1 aquí");
+        lblLanzamientosJugador1 = new JLabel ("Lanzamientos: " + casino.
+                getRondas().get(casino.getRondaActual()).
+                getLanzamientosRealizadosJugador1() + "");
         
         //PuntajeJugador1
-        lblPuntajeJugador1 = new JLabel ("Inserte PuntajeJugador1 aquí");
+        lblPuntajeJugador1 = new JLabel ("Puntaje: " + casino.getRondas().
+                get(casino.getRondaActual()).getPuntajeJugador1() + "");
         
         //LanzarJugador1
         btnLanzarJugador1 = new JButton ("Lanzar");
@@ -178,13 +199,16 @@ public class VentanaJuego extends JFrame
         
         //Parte Derecha
         //NombreJugador2
-        lblNombreJugador2 = new JLabel ("Inserte NombreJugador2 aquí");
+        lblNombreJugador2 = new JLabel (casino.getNombreJugador2());
         
         //LanzamientosJugador2
-        lblLanzamientosJugador2 = new JLabel ("Inserte lanzamientos restantes Jugador2 aquí");
+        lblLanzamientosJugador2 = new JLabel ("Lanzamientos: " + casino.
+                getRondas().get(casino.getRondaActual()).
+                getLanzamientosRealizadosJugador2()+ "");
         
         //PuntajeJugador2
-        lblPuntajeJugador2 = new JLabel ("Inserte PuntajeJugador2 aquí");
+        lblPuntajeJugador2 = new JLabel ("Puntaje: " + casino.getRondas().get(casino.
+                getRondaActual()).getPuntajeJugador2() + "");
         
         //LanzarJugador2
         btnLanzarJugador2 = new JButton ("Lanzar");

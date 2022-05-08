@@ -20,6 +20,26 @@ public class Casino
     private int jugadorALanzar;
     private String nombreJugador1;
     private String nombreJugador2;
+
+    public int getResuldadoDados1() {
+        return resuldadoDados1;
+    }
+
+    public int getResuldadoDados2() {
+        return resuldadoDados2;
+    }
+
+    public int getJugadorALanzar() {
+        return jugadorALanzar;
+    }
+
+    public String getNombreJugador1() {
+        return nombreJugador1;
+    }
+
+    public String getNombreJugador2() {
+        return nombreJugador2;
+    }
     
     public Casino(String nombreJugador1, String nombreJugador2, int lanzamientosARealizar)
     {
@@ -29,12 +49,13 @@ public class Casino
         rondas.add(new Ronda(nombreJugador1, nombreJugador2));
         rondaActual = 0;
         rondas.get(rondaActual).setLanzamientosARealizar(lanzamientosARealizar);
-        jugadorALanzar = (int) (Math.random() * (2-1));
+        jugadorALanzar = (int) (Math.random() * (3-1)) + 1;
+        System.out.println(jugadorALanzar);
     }
     
     public void lanzarDados()
     {
-        rondas.get(rondaActual).añadirLanzamientoRealizado();
+        rondas.get(rondaActual).restarLanzamiento();
         
         int dado1 = (int) (Math.random() * (6-1));
         int dado2 = (int) (Math.random() * (6-1));
