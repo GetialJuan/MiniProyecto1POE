@@ -13,6 +13,7 @@ public class Ronda
     private int puntajeJugador1;
     private int puntajeJugador2;
     private int lanzamientosARealizar;
+    private int lanzamientosRealizados;
     private int lanzamientosRealizadosJugador1;
     private int lanzamientosRealizadosJugador2;
     private int lanzamientosEmpatados;
@@ -24,6 +25,7 @@ public class Ronda
         puntajeJugador1 = 0;
         puntajeJugador2 = 0;
         lanzamientosEmpatados = 0;
+        lanzamientosRealizados = 0;
         lanzamientosRealizadosJugador1 = 0;
         lanzamientosRealizadosJugador2 = 0;
         this.nombreJugador1 = nombreJugador1;
@@ -45,17 +47,17 @@ public class Ronda
                 throw new AssertionError();
         }
         
-        restarLanzamientoARealizar();
-    }
-    
-    public void restarLanzamientoARealizar()
-    {
-        lanzamientosARealizar -= 1;
+        añadirLanzamientoRealizado();
     }
     
     public void añadirLanzamientoEmpatado()
     {
         lanzamientosEmpatados += 1;
+    }
+    
+    public void añadirLanzamientoRealizado()
+    {
+        lanzamientosRealizados += 1;
     }
     
     public void añadirLanzamientoRealizadoAJugador(int cualJugador)
@@ -71,5 +73,16 @@ public class Ronda
         }
     }
     
+    public void invalidarLanzamientosPorEmpate()
+    {
+        lanzamientosRealizados -= 1;
+        lanzamientosRealizadosJugador1 -= 1;
+        lanzamientosRealizadosJugador2 -= 1;
+    }
+    
+    public void setLanzamientosARealizar(int lanzamientosARealizar)
+    {
+        this.lanzamientosARealizar = lanzamientosARealizar;
+    }
     
 }

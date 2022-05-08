@@ -209,12 +209,15 @@ public class VentanaMenu extends JFrame
                 if(casino == null)
                 {
                     casino = new Casino(txtNombre1.getText(), 
-                            txtNombre2.getText());
+                            txtNombre2.getText(), 
+                    Integer.parseInt(txtNRondas.getText()));
                 }
                 else
                 {
                     casino.setNombreJugador1(txtNombre1.getText());
                     casino.setNombreJugador2(txtNombre2.getText());
+                    casino.setLanzamientosARealizar(
+                            Integer.parseInt(txtNRondas.getText()));
                 }
                 
                 try {
