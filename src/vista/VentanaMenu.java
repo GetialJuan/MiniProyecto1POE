@@ -188,7 +188,7 @@ public class VentanaMenu extends JFrame{
                 JOptionPane.showMessageDialog(null, "El juego ha iniciado");
                 
                 frame.dispose();
-                VentanaJuego VentanaDeJuego = new VentanaJuego();
+                //Esto se daño: VentanaJuego VentanaDeJuego = new VentanaJuego();
                 
                 
             
