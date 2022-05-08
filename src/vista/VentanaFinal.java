@@ -46,7 +46,6 @@ public class VentanaFinal extends JFrame
     //Botones
     private JButton btnNuevaRondaConLosMismosJugadores;
     private JButton btnNuevaRondaConOtrosJugadores;
-    private JButton btnSalir;
     
     //Secciones
     private JPanel pnlEstadisticasDeRonda;
@@ -130,13 +129,11 @@ public class VentanaFinal extends JFrame
         //Seccion de nueva ronda
         btnNuevaRondaConLosMismosJugadores = new JButton("Nueva Ronda Igual");
         btnNuevaRondaConOtrosJugadores = new JButton("Nueva Ronda Diferente");
-        btnSalir = new JButton("Salir Del Juego");
         
         pnlOpcionesDeNuevaRonda = new JPanel();
-        pnlOpcionesDeNuevaRonda.setLayout(new GridLayout(1,3));
+        pnlOpcionesDeNuevaRonda.setLayout(new GridLayout(1,2));
         pnlOpcionesDeNuevaRonda.add(btnNuevaRondaConLosMismosJugadores);
         pnlOpcionesDeNuevaRonda.add(btnNuevaRondaConOtrosJugadores);
-        pnlOpcionesDeNuevaRonda.add(btnSalir);
         
         //Se crea el contenedro principal
         contPrincipal = getContentPane();
@@ -148,7 +145,11 @@ public class VentanaFinal extends JFrame
         contPrincipal.add(pnlOpcionesDeNuevaRonda);
         
         //Se agregan los listeners
-        btnNuevaRondaConOtrosJugadores.addMouseListener(new ManejadorDeEventos());
+        btnNuevaRondaConOtrosJugadores.
+                addMouseListener(new ManejadorDeEventos());
+        
+        btnNuevaRondaConLosMismosJugadores.
+                addMouseListener(new ManejadorDeEventos());
         
         //Se añade al Frame
         frame.add(contPrincipal);
@@ -161,6 +162,7 @@ public class VentanaFinal extends JFrame
         public void mouseClicked(MouseEvent e) {
             if(e.getSource() == btnNuevaRondaConOtrosJugadores)
             {
+                frame.dispose();
                 try {
                     VentanaMenu ventanaMenu = new VentanaMenu(casino);
                 } catch (IOException | ParseException ex) {
@@ -169,8 +171,13 @@ public class VentanaFinal extends JFrame
             }
             else if(e.getSource() == btnNuevaRondaConLosMismosJugadores)
             {
-                //esto tal vez se implemente asi
-                //VentanaJuego ventanaJuego = new VentanaJuego(casino);
+                casino.nuevaRondaIgual();
+                frame.dispose();
+                try {
+                    VentanaJuego ventanaJuego = new VentanaJuego(casino);
+                } catch (IOException ex) {
+                    Logger.getLogger(VentanaFinal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
 

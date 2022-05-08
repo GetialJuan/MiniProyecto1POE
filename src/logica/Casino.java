@@ -91,10 +91,18 @@ public class Casino
         }
     }
     
-    public void nuevaRonda()
+    public void nuevaRondaIgual()
     {
+        //Se guardan  y agregan las mismas configutraciones
+        int lanzamientosARealizar = rondas.get(rondaActual).getLanzamientosARealizar();
+        
         rondas.add(new Ronda(nombreJugador1, nombreJugador2));
+        
+        //Se aumenta la ronda actual
         rondaActual += 1;
+        
+        //Se establecen los mismos lanzamientos
+        rondas.get(rondaActual).setLanzamientosARealizar(lanzamientosARealizar);
     }
     
     public List<Ronda> getRondas() {
@@ -129,6 +137,7 @@ public class Casino
         {
             if(puntajeRecord < rondas.get(i).getPuntajeGanador())
             {
+                puntajeRecord = rondas.get(i).getPuntajeGanador();
                 rondaRecord = i;
             }
         }
