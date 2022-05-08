@@ -6,6 +6,12 @@ package vista;
 
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -119,37 +125,51 @@ public class VentanaFinal extends JFrame
         contPrincipal.add(lblEstadisticasGenerales);
         contPrincipal.add(pnlEstadisticasGenerales);
         contPrincipal.add(pnlOpcionesDeNuevaRonda);
+        
+        //Se agregan los listeners
+        btnNuevaRondaConOtrosJugadores.addMouseListener(new ManejadorDeEventos());
     }
     
-    private class VentanaDeNombres extends JFrame
+    private class ManejadorDeEventos implements MouseListener
     {
-        private Container contPrincipal;
-        
-        //Botnes
-        private JButton empezarRonda;
-        
-        //Secciones
-        private JPanel pnlModoDeJuego;
-        private JPanel pnlNumeroDeLanzamientos;
-        private JPanel pnlNombresDeJugadores;
-        
-        
-        public VentanaDeNombres()
-        {
-            setSize(700,300);
-            setVisible(true);
-            setLocationRelativeTo(null);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setTitle("CasinoUnivalle");
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if(e.getSource() == btnNuevaRondaConOtrosJugadores)
+            {
+                try {
+                    VentanaMenu ventanaMenu = new VentanaMenu(casino);
+                } catch (IOException | ParseException ex) {
+                    Logger.getLogger(VentanaFinal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else if(e.getSource() == btnNuevaRondaConLosMismosJugadores)
+            {
+                //esto tal vez se implemente asi
+                //VentanaJuego ventanaJuego = new VentanaJuego(casino);
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
         
-        private void iniciarComponentes()
-        {
-            //Se crea el contenedro principal
-            this.contPrincipal = getContentPane();
-            this.contPrincipal.setLayout(new GridLayout(4,1));
-        }
     }
-    
     
 }

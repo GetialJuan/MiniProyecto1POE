@@ -18,9 +18,13 @@ public class Casino
     private int resuldadoDados1;
     private int resuldadoDados2;
     private int jugadorALanzar;
+    private String nombreJugador1;
+    private String nombreJugador2;
     
     public Casino(String nombreJugador1, String nombreJugador2)
     {
+        this.nombreJugador1 = nombreJugador1;
+        this.nombreJugador2 = nombreJugador2;
         rondas = new ArrayList();
         rondas.add(new Ronda(nombreJugador1, nombreJugador2));
         rondaActual = 0;
@@ -57,7 +61,7 @@ public class Casino
         }
     }
     
-    public void jugarOtraRonda()
+    public void nuevaRonda()
     {
         //rondas.add(new Ronda());
         rondaActual += 1;
@@ -69,5 +73,15 @@ public class Casino
 
     public int getRondaActual() {
         return rondaActual;
+    }
+    
+    public void setNombreJugador1(String nombreJugador1)
+    {
+        this.nombreJugador1 = nombreJugador1;
+    }
+    
+    public void setNombreJugador2(String nombreJugador2)
+    {
+        this.nombreJugador2 = nombreJugador2;
     }
 }

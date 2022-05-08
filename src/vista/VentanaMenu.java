@@ -211,6 +211,11 @@ public class VentanaMenu extends JFrame
                     casino = new Casino(txtNombre1.getText(), 
                             txtNombre2.getText());
                 }
+                else
+                {
+                    casino.setNombreJugador1(txtNombre1.getText());
+                    casino.setNombreJugador2(txtNombre2.getText());
+                }
                 
                 try {
                     VentanaJuego ventanaJuego = new VentanaJuego(casino); 
