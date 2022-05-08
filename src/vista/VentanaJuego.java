@@ -5,6 +5,7 @@
 package vista;
 
 import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -57,13 +58,13 @@ public class VentanaJuego extends JFrame
     private JLabel lblDado1, lblDado2; 
     
     //JButtons
-    private JButton lanzarJugador1, lanzarJugador2;
+    private JButton btnLanzarJugador1, btnLanzarJugador2;
     
     //JPanels
         //JPanels de segundo grado
-    private JPanel parteSuperior, parteInferior;
+    private JPanel pnlSuperior, pnlInferior;
         //JPanels de tercer grado
-    private JPanel parteInferiorJugador1, parteInferiorJugador2, parteSuperior2;
+    private JPanel pnlInferiorJugador1, pnlInferiorJugador2, pnlSuperior2, pnlDados;
     
     //Files
     private File imagenEncabezado;
@@ -91,6 +92,9 @@ public class VentanaJuego extends JFrame
     
     private void iniciarComponentes(Casino casinoInput) throws IOException
     {
+        //Guardamos Casino
+        casino = casinoInput;
+        
         //Obtenemos la ruta absoluta
         String rutaArchivo = new File("").getAbsolutePath();
         
@@ -122,11 +126,125 @@ public class VentanaJuego extends JFrame
         TimerTiempo.start();
         
         //JugadorGanador
+        lblJugadorGanador = new JLabel ("Jugador parcialmente ganador: ");
+        
+        //LanzamientosARealizar
+        lblLanzamientosARealizar = new JLabel("Lanzamientos a realizar: ");
+        
+        //LanzamientosRealizados
+        lblLanzamientosRestantes = new JLabel("Lanzamientos restantes");
+        
+        //LanzamientosEmpates
+        lblLanzamientosEmpates = new JLabel ("Lanzamientso con empate: ");
+        
+        //Dados
+        imagenDado1 = new File(dado1Ruta);
+        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+        lblDado1 = new JLabel();
+        
+            //Se agrega imagen
+        lblDado1.setIcon(iconDado1);
+        
+        imagenDado2 = new File(dado2Ruta);
+        BufferedImage bufferedImagenDado2 = ImageIO.read(imagenDado2);
+        ImageIcon iconDado2 = new ImageIcon(bufferedImagenDado2);
+        lblDado2 = new JLabel();
+        
+            //Se agrega imagen
+        lblDado2.setIcon(iconDado2);
+        
+        //JugadorALanzar
+        lblJugadorALanzar = new JLabel ("Próximo jugador a lanzar: ");
         
         
         
+        //Parte Inferior
+        
+        //Parte izquierda
+        //NombreJugador1
+        lblNombreJugador1 = new JLabel ("Inserte NombreJugador1 aquí");
+        
+        //LanzamientosJugador1
+        lblLanzamientosJugador1 = new JLabel ("Inserte lanzamientos restantes Jugador1 aquí");
+        
+        //PuntajeJugador1
+        lblPuntajeJugador1 = new JLabel ("Inserte PuntajeJugador1 aquí");
+        
+        //LanzarJugador1
+        btnLanzarJugador1 = new JButton ("Lanzar");
         
         
+        //Parte Derecha
+        //NombreJugador2
+        lblNombreJugador2 = new JLabel ("Inserte NombreJugador2 aquí");
+        
+        //LanzamientosJugador2
+        lblLanzamientosJugador2 = new JLabel ("Inserte lanzamientos restantes Jugador2 aquí");
+        
+        //PuntajeJugador2
+        lblPuntajeJugador2 = new JLabel ("Inserte PuntajeJugador2 aquí");
+        
+        //LanzarJugador2
+        btnLanzarJugador2 = new JButton ("Lanzar");
+        
+        
+        //CONFIGURACIÓN JPANELS
+        //pnlInferiorJugador1
+        pnlInferiorJugador1 = new JPanel();
+        pnlInferiorJugador1.setLayout(new GridLayout(1,4));
+        pnlInferiorJugador1.add(lblNombreJugador1);
+        pnlInferiorJugador1.add(lblLanzamientosJugador1);
+        pnlInferiorJugador1.add(lblPuntajeJugador1);
+        pnlInferiorJugador1.add(btnLanzarJugador1);
+        
+        //pnlInferiorJugador2
+        pnlInferiorJugador2 = new JPanel();
+        pnlInferiorJugador2.setLayout(new GridLayout(1,4));
+        pnlInferiorJugador2.add(lblNombreJugador2);
+        pnlInferiorJugador2.add(lblLanzamientosJugador2);
+        pnlInferiorJugador2.add(lblPuntajeJugador2);
+        pnlInferiorJugador2.add(btnLanzarJugador2);
+        
+        //pnlSuperior2
+        pnlSuperior2 = new JPanel();
+        pnlSuperior2.setLayout(new GridLayout(2,2));
+        pnlSuperior2.add(lblTiempo);
+        pnlSuperior2.add(lblJugadorGanador);
+        pnlSuperior2.add(lblLanzamientosARealizar);
+        pnlSuperior2.add(lblLanzamientosRestantes);
+        
+        //pnlDados
+        pnlDados = new JPanel();
+        pnlDados.setLayout(new GridLayout(2,1));
+        pnlDados.add(lblDado1);
+        pnlDados.add(lblDado2);
+        
+        //pnlSuperior
+        pnlSuperior = new JPanel();
+        pnlSuperior.setLayout(new GridLayout(1,6));
+        pnlSuperior.add(lblEncabezado);
+        pnlSuperior.add(lblTitulo);
+        pnlSuperior.add(pnlSuperior2);
+        pnlSuperior.add(lblLanzamientosEmpates);
+        pnlSuperior.add(pnlDados);
+        pnlSuperior.add(lblJugadorALanzar);
+        
+        //pnlInferior
+        pnlInferior = new JPanel();
+        pnlInferior.setLayout(new GridLayout(2,1));
+        pnlInferior.add(pnlInferiorJugador1);
+        pnlInferior.add(pnlInferiorJugador2);
+        
+        //contenedorPrincipal
+        contenedorPrincipal = new Container();
+        contenedorPrincipal.setLayout(new GridLayout(1,2));
+        contenedorPrincipal.add(pnlSuperior);
+        contenedorPrincipal.add(pnlInferior);
+        
+        
+                
+            
         
         
         
