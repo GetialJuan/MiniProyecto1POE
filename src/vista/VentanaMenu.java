@@ -117,7 +117,7 @@ public class VentanaMenu extends JFrame{
         
         //Se instancia el btnInciarjugar
         btnIniciarJuego = new JButton("Iniciar Juego");
-        btnIniciarJuego.addMouseListener(new ManejadorDeEventos());
+        btnIniciarJuego.addActionListener(new ManejadorDeEventos());
         
         //Se crea el contenedro principal
         contenedorPrincipal = getContentPane();
@@ -152,7 +152,6 @@ public class VentanaMenu extends JFrame{
         @Override
         public void mouseClicked(MouseEvent e) 
         {
-            JOptionPane.showMessageDialog(null, "Se inicia el juego");
             //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
@@ -178,19 +177,31 @@ public class VentanaMenu extends JFrame{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            switch (cmbModoDeJuego.getSelectedItem().toString()) 
-            {
-                case "Jugador vs CPU":
-                    txtNombre2.setEnabled(false);
-                    txtNombre2.setText("CPU");
-                    break;
-                case "Jugador vs Jugador":
-                    txtNombre2.setEnabled(true);
-                    break;
-                default:
-                    throw new AssertionError();
+            
+            //Si el btnIniciarJuego es presionado
+            if (e.getSource() == btnIniciarJuego){
+                JOptionPane.showMessageDialog(null, "Se inicia el juego");
+            
+            //Si cmbModoDeJuego es presionado
+            } else if (e.getSource() == cmbModoDeJuego){
+                switch (cmbModoDeJuego.getSelectedItem().toString()) 
+                {
+                    case "Jugador vs CPU":
+                        txtNombre2.setEnabled(false);
+                        txtNombre2.setText("CPU");
+                        break;
+                    case "Jugador vs Jugador":
+                        txtNombre2.setEnabled(true);
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
             }
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            
+            
+            
+            
+            
         }
         
     }
