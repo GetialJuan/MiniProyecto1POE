@@ -4,7 +4,9 @@
  */
 package vista;
 
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -120,30 +122,42 @@ public class VentanaJuego extends JFrame
         lblEncabezado.setIcon(iconEncabezado);
         
         //Titulo
-        lblTitulo = new JLabel("JUEGO DE DADOS");  
+        lblTitulo = new JLabel("---JUEGO DE DADOS---"); 
+        lblTitulo.setFont(new Font("Century Gothic", Font.BOLD, 32));
+        lblTitulo.setForeground(Color.RED);
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         
         //Timer
-        lblTiempo = new JLabel("Tiempo aquí");
+        lblTiempo = new JLabel("Tiempo transcurrido: 0 segundos");
+        lblTiempo.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+        lblTiempo.setHorizontalAlignment(SwingConstants.CENTER);
         TimerTiempo = new Timer(1000, new ManejadorDeEventos());
         TimerTiempo.start();
         
         //JugadorGanador
         lblJugadorGanador = new JLabel ("Jugador parcialmente ganador: ");
+        lblJugadorGanador.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+        lblJugadorGanador.setHorizontalAlignment(SwingConstants.CENTER);
         
         //LanzamientosARealizar
         lblLanzamientosARealizar = new JLabel("Lanzamientos a realizar: " + 
                 casino.getRondas().get(casino.getRondaActual()).
                         getLanzamientosARealizar());
+        lblLanzamientosARealizar.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+        lblLanzamientosARealizar.setHorizontalAlignment(SwingConstants.CENTER);
         
         //LanzamientosRealizados
         lblLanzamientosRestantes = new JLabel("Lanzamientos restantes: " + 
                 casino.getRondas().get(casino.getRondaActual()).getLanzamientosRestantes());
+        lblLanzamientosRestantes.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+        lblLanzamientosRestantes.setHorizontalAlignment(SwingConstants.CENTER);
         
         //LanzamientosEmpates
         lblLanzamientosEmpates = new JLabel ("Lanzamientos con empate: " + 
                 casino.getRondas().get(casino.getRondaActual()).
                         getLanzamientosEmpatados());
+        lblLanzamientosEmpates.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
+        lblLanzamientosEmpates.setHorizontalAlignment(SwingConstants.CENTER);
         
         //Dados
         imagenDado1 = new File(dado1Ruta);
@@ -179,6 +193,8 @@ public class VentanaJuego extends JFrame
         }
         lblJugadorALanzar = new JLabel ("Próximo jugador a lanzar: " + 
                 jugadorALanzar);
+        lblJugadorALanzar.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
+        lblJugadorALanzar.setHorizontalAlignment(SwingConstants.CENTER);
         
         
         
@@ -255,12 +271,11 @@ public class VentanaJuego extends JFrame
         
         //pnlSuperior
         pnlSuperior = new JPanel();
-        pnlSuperior.setLayout(new GridLayout(6,1));
+        pnlSuperior.setLayout(new GridLayout(5,1));
         pnlSuperior.add(lblEncabezado);
         pnlSuperior.add(lblTitulo);
         pnlSuperior.add(pnlSuperior2);
         pnlSuperior.add(lblLanzamientosEmpates);
-        pnlSuperior.add(pnlDados);
         pnlSuperior.add(lblJugadorALanzar);
         
         //pnlInferior
@@ -271,8 +286,9 @@ public class VentanaJuego extends JFrame
         
         //contenedorPrincipal
         contenedorPrincipal = new Container();
-        contenedorPrincipal.setLayout(new GridLayout(2,1));
+        contenedorPrincipal.setLayout(new GridLayout(3,1));
         contenedorPrincipal.add(pnlSuperior);
+        contenedorPrincipal.add(pnlDados);
         contenedorPrincipal.add(pnlInferior);
         
         //Se añade al Frame

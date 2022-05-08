@@ -115,7 +115,7 @@ public class VentanaMenu extends JFrame
         pnlNRondas.setLayout(new GridLayout(1,2));
         lblNRondas = new JLabel("Escriba el numero de rondas : ");
         lblNRondas.setHorizontalAlignment(SwingConstants.CENTER);
-        txtNRondas = new JTextField("0");
+        txtNRondas = new JTextField("5");
         pnlNRondas.add(lblNRondas);
         pnlNRondas.add(txtNRondas);
         
