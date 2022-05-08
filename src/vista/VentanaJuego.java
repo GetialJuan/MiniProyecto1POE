@@ -164,6 +164,7 @@ public class VentanaJuego extends JFrame
         BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
         ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
         lblDado1 = new JLabel();
+        lblDado1.setHorizontalAlignment(SwingConstants.CENTER);
         
             //Se agrega imagen
         lblDado1.setIcon(iconDado1);
@@ -172,6 +173,7 @@ public class VentanaJuego extends JFrame
         BufferedImage bufferedImagenDado2 = ImageIO.read(imagenDado2);
         ImageIcon iconDado2 = new ImageIcon(bufferedImagenDado2);
         lblDado2 = new JLabel();
+        lblDado2.setHorizontalAlignment(SwingConstants.CENTER);
         
             //Se agrega imagen
         lblDado2.setIcon(iconDado2);
@@ -204,38 +206,50 @@ public class VentanaJuego extends JFrame
         //NombreJugador1
         lblNombreJugador1 = new JLabel (casino.getRondas().get(casino.
                 getRondaActual()).getNombreJugador1());
+        lblNombreJugador1.setFont(new Font("Century Schoolbook", Font.BOLD, 28));
+        lblNombreJugador1.setForeground(Color.BLUE);
+        lblNombreJugador1.setHorizontalAlignment(SwingConstants.CENTER);
         
         //LanzamientosJugador1
         lblLanzamientosJugador1 = new JLabel ("Lanzamientos: " + casino.
                 getRondas().get(casino.getRondaActual()).
                 getLanzamientosRealizadosJugador1() + "");
+        lblLanzamientosJugador1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
         
         //PuntajeJugador1
         lblPuntajeJugador1 = new JLabel ("Puntaje: " + casino.getRondas().
                 get(casino.getRondaActual()).getPuntajeJugador1() + "");
+        lblPuntajeJugador1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
         
         //LanzarJugador1
         btnLanzarJugador1 = new JButton ("Lanzar");
         btnLanzarJugador1.addMouseListener(new ManejadorDeEventos());
+        btnLanzarJugador1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
         
         
         //Parte Derecha
         //NombreJugador2
         lblNombreJugador2 = new JLabel (casino.getRondas().get(casino.
                 getRondaActual()).getNombreJugador2());
+        lblNombreJugador2.setFont(new Font("Century Schoolbook", Font.BOLD, 28));
+        lblNombreJugador2.setForeground(Color.BLUE);
+        lblNombreJugador2.setHorizontalAlignment(SwingConstants.CENTER);
         
         //LanzamientosJugador2
         lblLanzamientosJugador2 = new JLabel ("Lanzamientos: " + casino.
                 getRondas().get(casino.getRondaActual()).
                 getLanzamientosRealizadosJugador2()+ "");
+        lblLanzamientosJugador2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
         
         //PuntajeJugador2
         lblPuntajeJugador2 = new JLabel ("Puntaje: " + casino.getRondas().get(casino.
                 getRondaActual()).getPuntajeJugador2() + "");
+        lblPuntajeJugador2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
         
         //LanzarJugador2
         btnLanzarJugador2 = new JButton ("Lanzar");
         btnLanzarJugador2.addMouseListener(new ManejadorDeEventos());
+        btnLanzarJugador2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
         
         
         //CONFIGURACIÓN JPANELS
