@@ -19,10 +19,10 @@ public class Casino
     private int resuldadoDados2;
     private int jugadorALanzar;
     
-    public Casino()
+    public Casino(String nombreJugador1, String nombreJugador2)
     {
         rondas = new ArrayList();
-        rondas.add(new Ronda());
+        rondas.add(new Ronda(nombreJugador1, nombreJugador2));
         rondaActual = 0;
         jugadorALanzar = (int) (Math.random() * (2-1));
     }
@@ -59,7 +59,15 @@ public class Casino
     
     public void jugarOtraRonda()
     {
-        rondas.add(new Ronda());
+        //rondas.add(new Ronda());
         rondaActual += 1;
+    }
+    
+    public List<Ronda> getRondas() {
+        return rondas;
+    }
+
+    public int getRondaActual() {
+        return rondaActual;
     }
 }

@@ -16,14 +16,18 @@ public class Ronda
     private int lanzamientosRealizadosJugador2;
     private int lanzamientosEmpatados;
     private int lanzamientosARealizar;
+    private String nombreJugador1;
+    private String nombreJugador2;
     
-    public Ronda()
+    public Ronda(String nombreJugador1, String nombreJugador2)
     {
         puntajeJugador1 = 0;
         puntajeJugador2 = 0;
         lanzamientosEmpatados = 0;
         lanzamientosRealizadosJugador1 = 0;
         lanzamientosRealizadosJugador2 = 0;
+        this.nombreJugador1 = nombreJugador1;
+        this.nombreJugador2 = nombreJugador2;
     }
     
     public void sumarPuntajeAJugador(int cualJugador, int puntajeASumar)

@@ -25,6 +25,8 @@ public class VentanaJuego extends JFrame
     private JLabel lblDado1;
     private JLabel lblDado2;
     
+    //casino
+    
     public VentanaJuego()
     {
         iniciarComponentes();
