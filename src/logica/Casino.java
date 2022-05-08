@@ -68,10 +68,12 @@ public class Casino
         {
             case 1:
                 resuldadoDados1 = dado1 + dado2;
+                System.out.println("P1 RES: " + resuldadoDados1);
                 jugadorALanzar = 2;
                 break;
             case 2:
                 resuldadoDados2 = dado1 + dado2;
+                System.out.println("P2 RES: " + resuldadoDados2);
                 jugadorALanzar = 1;
                 break;
             default:
@@ -80,18 +82,26 @@ public class Casino
         
     }
     
+    public void sumarPuntajeDeLanzamiento1(){
+        rondas.get(rondaActual).sumarPuntajeAJugador(1, resuldadoDados1);
+    }
+    
+    public void sumarPuntajeDeLanzamiento2(){
+        rondas.get(rondaActual).sumarPuntajeAJugador(2, resuldadoDados2);
+    }
+    
     public void sumarPuntajesDeLanzamiento()
     {
         if(resuldadoDados1 != resuldadoDados2)
         {
             rondas.get(rondaActual).restarLanzamiento();
-            rondas.get(rondaActual).sumarPuntajeAJugador(1, resuldadoDados1);
-            rondas.get(rondaActual).sumarPuntajeAJugador(2, resuldadoDados2);
         }
         else
         {
             rondas.get(rondaActual).añadirLanzamientoEmpatado();
             rondas.get(rondaActual).invalidarLanzamientosPorEmpate();
+            rondas.get(rondaActual).sumarPuntajeAJugador(1, -resuldadoDados1);
+            rondas.get(rondaActual).sumarPuntajeAJugador(2, -resuldadoDados2);
         }
     }
     

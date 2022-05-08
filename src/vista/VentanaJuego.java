@@ -347,30 +347,41 @@ public class VentanaJuego extends JFrame
             lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
             k++;
             
+            /*
+            if (e.getSource() == btnLanzarJugador1){
+                casino.lanzarDados();
+                contadorLanzamientos += 1;
+                
+                
+            }
+            */
+            
             if(e.getSource() == btnLanzarJugador1 || e.getSource() == btnLanzarJugador2)
             {
                 casino.lanzarDados();
                 contadorLanzamientos += 1;
                 
-                //Cada dos lanzamientos se suman los puntajes de caja jugador
-                if(contadorLanzamientos % 2 == 0)
-                {
-                    casino.sumarPuntajesDeLanzamiento();
-                }
-                
-                //Se cambia el juagador a a lanzr
+                //Se cambia el juagador a lanzar
                 String jugadorALanzar;
                 switch (casino.getJugadorALanzar()) {
                     case 1:
+                        casino.sumarPuntajeDeLanzamiento2();
                         jugadorALanzar = casino.getRondas().get(casino.
                                 getRondaActual()).getNombreJugador1();
                         break;
                     case 2:
+                        casino.sumarPuntajeDeLanzamiento1();
                         jugadorALanzar = casino.getRondas().get(casino.
                                 getRondaActual()).getNombreJugador2();;
                         break;
                     default:
                         throw new AssertionError();
+                }
+                
+                //Cada dos lanzamientos se comprueban los puntajes de caja jugador (En caso de empate)
+                if(contadorLanzamientos % 2 == 0)
+                {
+                    casino.sumarPuntajesDeLanzamiento();
                 }
                 
                 //Se ajusta el nuevo valor de cada lbl
