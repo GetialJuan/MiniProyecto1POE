@@ -32,6 +32,7 @@ import javax.swing.text.MaskFormatter;
  * @author Juan
  */
 public class VentanaMenu extends JFrame{
+    private JFrame frame = new JFrame();
     private Container contenedorPrincipal;
     private JLabel encabezado;
     private JLabel lblModoDeJuego;
@@ -51,11 +52,12 @@ public class VentanaMenu extends JFrame{
     public VentanaMenu() throws IOException, ParseException
     {
         iniciarComponentes();
-        setSize(700,300);
-        setVisible(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("CasinoUnivalle");
+        frame.setSize(700,300);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("CasinoUnivalle");
+        
     }
     
     private void iniciarComponentes() throws IOException, ParseException
@@ -128,6 +130,9 @@ public class VentanaMenu extends JFrame{
         contenedorPrincipal.add(pnlNombres);
         contenedorPrincipal.add(btnIniciarJuego);
         
+        //Se añade al frame
+        frame.add(contenedorPrincipal);
+        
     }
     
     private class ManejadorDeEventos implements MouseListener, ActionListener
@@ -180,7 +185,12 @@ public class VentanaMenu extends JFrame{
             
             //Si el btnIniciarJuego es presionado
             if (e.getSource() == btnIniciarJuego){
-                JOptionPane.showMessageDialog(null, "Se inicia el juego");
+                JOptionPane.showMessageDialog(null, "El juego ha iniciado");
+                
+                frame.dispose();
+                VentanaJuego VentanaDeJuego = new VentanaJuego();
+                
+                
             
             //Si cmbModoDeJuego es presionado
             } else if (e.getSource() == cmbModoDeJuego){
