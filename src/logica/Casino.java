@@ -50,12 +50,13 @@ public class Casino
         rondaActual = 0;
         rondas.get(rondaActual).setLanzamientosARealizar(lanzamientosARealizar);
         jugadorALanzar = (int) (Math.random() * (3-1)) + 1;
-        System.out.println(jugadorALanzar);
     }
     
     public void lanzarDados()
     {
         rondas.get(rondaActual).restarLanzamiento();
+        rondas.get(rondaActual).
+                añadirLanzamientoRealizadoAJugador(jugadorALanzar);
         
         int dado1 = (int) (Math.random() * (6-1));
         int dado2 = (int) (Math.random() * (6-1));
@@ -104,6 +105,7 @@ public class Casino
         return rondaActual;
     }
     
+    //Setters
     public void setNombreJugador1(String nombreJugador1)
     {
         this.nombreJugador1 = nombreJugador1;

@@ -72,11 +72,9 @@ public class Ronda
         switch (cualJugador) {
             case 1:
                 puntajeJugador1 += puntajeASumar;
-                añadirLanzamientoRealizadoAJugador(1);
                 break;
             case 2:
                 puntajeJugador2 += puntajeASumar;
-                añadirLanzamientoRealizadoAJugador(2);
                 break;
             default:
                 throw new AssertionError();
@@ -103,6 +101,7 @@ public class Ronda
                 break;
             case 2:
                 lanzamientosRealizadosJugador2 += 1;
+                break;
             default:
                 throw new AssertionError();
         }

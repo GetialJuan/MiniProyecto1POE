@@ -195,6 +195,7 @@ public class VentanaJuego extends JFrame
         
         //LanzarJugador1
         btnLanzarJugador1 = new JButton ("Lanzar");
+        btnLanzarJugador1.addMouseListener(new ManejadorDeEventos());
         
         
         //Parte Derecha
@@ -212,6 +213,7 @@ public class VentanaJuego extends JFrame
         
         //LanzarJugador2
         btnLanzarJugador2 = new JButton ("Lanzar");
+        btnLanzarJugador2.addMouseListener(new ManejadorDeEventos());
         
         
         //CONFIGURACIÓN JPANELS
@@ -282,30 +284,77 @@ public class VentanaJuego extends JFrame
     
     private class ManejadorDeEventos implements MouseListener, ActionListener
     {
-
+        private int contadorLanzamientos = 0;
         @Override
         public void mouseClicked(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            if(e.getSource() == btnLanzarJugador1 || e.getSource() == btnLanzarJugador2)
+            {
+                casino.lanzarDados();
+                contadorLanzamientos += 1;
+                
+                //Cada dos lanzamientos se suman los puntajes de caja jugador
+                if(contadorLanzamientos % 2 == 0)
+                {
+                    casino.sumarPuntajesDeLanzamiento();
+                }
+                
+                //Se cambia el juagador a a lanzr
+                String jugadorALanzar;
+                switch (casino.getJugadorALanzar()) {
+                    case 1:
+                        jugadorALanzar = casino.getNombreJugador1();
+                        break;
+                    case 2:
+                        jugadorALanzar = casino.getNombreJugador2();
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+                
+                //Se ajusta el nuevo valor de cada lbl
+                lblJugadorALanzar.setText("Próximo jugador a lanzar: " + 
+                        jugadorALanzar);
+                
+                lblLanzamientosJugador1.setText("Lanzamientos: " + casino.
+                getRondas().get(casino.getRondaActual()).
+                getLanzamientosRealizadosJugador1()+ "");
+                
+                lblLanzamientosJugador2.setText("Lanzamientos: " + casino.
+                getRondas().get(casino.getRondaActual()).
+                getLanzamientosRealizadosJugador2()+ "");
+                
+                lblPuntajeJugador1.setText("Puntaje: " + casino.getRondas().
+                        get(casino.getRondaActual()).getPuntajeJugador1() + "");
+                
+                lblPuntajeJugador2.setText("Puntaje: " + casino.getRondas().
+                        get(casino.getRondaActual()).getPuntajeJugador2() + "");
+                
+                lblLanzamientosEmpates.setText("Lanzamientos con empate: " + 
+                        casino.getRondas().get(casino.getRondaActual()).
+                                getLanzamientosEmpatados());
+                
+            }
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            ///throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
