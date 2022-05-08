@@ -54,7 +54,6 @@ public class Casino
     
     public void lanzarDados()
     {
-        rondas.get(rondaActual).restarLanzamiento();
         rondas.get(rondaActual).
                 añadirLanzamientoRealizadoAJugador(jugadorALanzar);
         
@@ -81,6 +80,7 @@ public class Casino
     {
         if(resuldadoDados1 != resuldadoDados2)
         {
+            rondas.get(rondaActual).restarLanzamiento();
             rondas.get(rondaActual).sumarPuntajeAJugador(1, resuldadoDados1);
             rondas.get(rondaActual).sumarPuntajeAJugador(2, resuldadoDados2);
         }

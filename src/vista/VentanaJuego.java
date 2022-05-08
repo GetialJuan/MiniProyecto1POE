@@ -333,6 +333,22 @@ public class VentanaJuego extends JFrame
                         casino.getRondas().get(casino.getRondaActual()).
                                 getLanzamientosEmpatados());
                 
+                lblJugadorGanador.setText("Jugador parcialmente ganador: " + 
+                        casino.getRondas().get(casino.getRondaActual()).
+                                getGanador());
+                
+                lblLanzamientosRestantes.setText("Lanzamientos restantes: " + 
+                casino.getRondas().get(casino.getRondaActual()).
+                        getLanzamientosRestantes());
+                
+                //Se verifica si se acabaron los lanzamientois
+                if(casino.getRondas().get(casino.getRondaActual()).
+                        getLanzamientosRestantes() <= 0)
+                {
+                    frame.dispose();
+                    VentanaFinal ventanaFinal = new VentanaFinal(casino);
+                }
+                
             }
             //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }

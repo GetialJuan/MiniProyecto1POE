@@ -67,6 +67,18 @@ public class Ronda
         return nombreJugador2;
     }
     
+    public String getGanador()
+    {
+        if(puntajeJugador1 > puntajeJugador2)
+        {
+            return nombreJugador1;
+        }
+        else
+        {
+            return nombreJugador2;
+        }
+    }
+    
     public void sumarPuntajeAJugador(int cualJugador, int puntajeASumar)
     {
         switch (cualJugador) {
@@ -79,8 +91,6 @@ public class Ronda
             default:
                 throw new AssertionError();
         }
-        
-        restarLanzamiento();
     }
     
     public void añadirLanzamientoEmpatado()
@@ -109,7 +119,6 @@ public class Ronda
     
     public void invalidarLanzamientosPorEmpate()
     {
-        lanzamientosRestantes += 1;
         lanzamientosRealizadosJugador1 -= 1;
         lanzamientosRealizadosJugador2 -= 1;
     }
