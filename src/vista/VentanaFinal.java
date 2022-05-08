@@ -121,9 +121,35 @@ public class VentanaFinal extends JFrame
         contPrincipal.add(pnlOpcionesDeNuevaRonda);
     }
     
-    private class ventanaDeNombres extends JFrame
+    private class VentanaDeNombres extends JFrame
     {
+        private Container contPrincipal;
         
+        //Botnes
+        private JButton empezarRonda;
+        
+        //Secciones
+        private JPanel pnlModoDeJuego;
+        private JPanel pnlNumeroDeLanzamientos;
+        private JPanel pnlNombresDeJugadores;
+        
+        
+        public VentanaDeNombres()
+        {
+            setSize(700,300);
+            setVisible(true);
+            setLocationRelativeTo(null);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setTitle("CasinoUnivalle");
+        }
+        
+        private void iniciarComponentes()
+        {
+            //Se crea el contenedro principal
+            this.contPrincipal = getContentPane();
+            this.contPrincipal.setLayout(new GridLayout(4,1));
+        }
     }
+    
     
 }
