@@ -5,6 +5,10 @@
 package vista;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import logica.Casino;
 
@@ -29,9 +35,12 @@ public class VentanaJuego extends JFrame
     //JFrames
     private JFrame frame = new JFrame();
     
+    //Timer
+    private Timer TimerTiempo;
+    
     //JLabels
-    private JLabel encabezado;
-    private JLabel titulo; 
+    private JLabel lblEncabezado;
+    private JLabel lblTitulo;
     private JLabel lblLanzamientosARealizar;
         //Nombres de los jugadores
     private JLabel lblNombreJugador1, lblNombreJugador2;
@@ -78,6 +87,8 @@ public class VentanaJuego extends JFrame
         frame.setTitle("CasinoUnivalle");
     }
     
+    int k = 0;
+    
     private void iniciarComponentes(Casino casinoInput) throws IOException
     {
         //Obtenemos la ruta absoluta
@@ -97,14 +108,65 @@ public class VentanaJuego extends JFrame
         imagenEncabezado = new File(encabezadoCasinoRuta);
         BufferedImage bufferedImagenEncabezado = ImageIO.read(imagenEncabezado);
         ImageIcon iconEncabezado = new ImageIcon(bufferedImagenEncabezado);
-        encabezado = new JLabel();
+        lblEncabezado = new JLabel();
         
         //Se agrega la imagen del encabezado
-        encabezado.setIcon(iconEncabezado);
+        lblEncabezado.setIcon(iconEncabezado);
+        
+        //Titulo
+        lblTitulo = new JLabel("JUEGO DE DADOS");  
+        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        //Timer
+        TimerTiempo = new Timer(1000, new ManejadorDeEventos());
+        TimerTiempo.start();
+        
+        //JugadorGanador
         
         
         
         
+        
+        
+        
+        
+        
+        
+    }
+    
+    private class ManejadorDeEventos implements MouseListener, ActionListener
+    {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
+            k++;
+        }
         
     }
     
