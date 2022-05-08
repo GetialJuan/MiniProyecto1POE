@@ -21,6 +21,7 @@ public class Principal {
     
     //Holis
     public static void main(String[] args) throws IOException, ParseException {
+        System.out.println("hola mundo");
         VentanaMenu menu = new VentanaMenu();
     }
     

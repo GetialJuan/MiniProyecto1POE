@@ -122,6 +122,7 @@ public class VentanaJuego extends JFrame
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         
         //Timer
+        lblTiempo = new JLabel("Tiempo aquí");
         TimerTiempo = new Timer(1000, new ManejadorDeEventos());
         TimerTiempo.start();
         
@@ -192,7 +193,7 @@ public class VentanaJuego extends JFrame
         //CONFIGURACIÓN JPANELS
         //pnlInferiorJugador1
         pnlInferiorJugador1 = new JPanel();
-        pnlInferiorJugador1.setLayout(new GridLayout(1,4));
+        pnlInferiorJugador1.setLayout(new GridLayout(4,1));
         pnlInferiorJugador1.add(lblNombreJugador1);
         pnlInferiorJugador1.add(lblLanzamientosJugador1);
         pnlInferiorJugador1.add(lblPuntajeJugador1);
@@ -200,7 +201,7 @@ public class VentanaJuego extends JFrame
         
         //pnlInferiorJugador2
         pnlInferiorJugador2 = new JPanel();
-        pnlInferiorJugador2.setLayout(new GridLayout(1,4));
+        pnlInferiorJugador2.setLayout(new GridLayout(4,1));
         pnlInferiorJugador2.add(lblNombreJugador2);
         pnlInferiorJugador2.add(lblLanzamientosJugador2);
         pnlInferiorJugador2.add(lblPuntajeJugador2);
@@ -216,13 +217,13 @@ public class VentanaJuego extends JFrame
         
         //pnlDados
         pnlDados = new JPanel();
-        pnlDados.setLayout(new GridLayout(2,1));
+        pnlDados.setLayout(new GridLayout(1,2));
         pnlDados.add(lblDado1);
         pnlDados.add(lblDado2);
         
         //pnlSuperior
         pnlSuperior = new JPanel();
-        pnlSuperior.setLayout(new GridLayout(1,6));
+        pnlSuperior.setLayout(new GridLayout(6,1));
         pnlSuperior.add(lblEncabezado);
         pnlSuperior.add(lblTitulo);
         pnlSuperior.add(pnlSuperior2);
@@ -232,15 +233,18 @@ public class VentanaJuego extends JFrame
         
         //pnlInferior
         pnlInferior = new JPanel();
-        pnlInferior.setLayout(new GridLayout(2,1));
+        pnlInferior.setLayout(new GridLayout(1,2));
         pnlInferior.add(pnlInferiorJugador1);
         pnlInferior.add(pnlInferiorJugador2);
         
         //contenedorPrincipal
         contenedorPrincipal = new Container();
-        contenedorPrincipal.setLayout(new GridLayout(1,2));
+        contenedorPrincipal.setLayout(new GridLayout(2,1));
         contenedorPrincipal.add(pnlSuperior);
         contenedorPrincipal.add(pnlInferior);
+        
+        //Se añade al Frame
+        frame.add(contenedorPrincipal);
         
         
                 
