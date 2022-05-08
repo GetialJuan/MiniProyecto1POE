@@ -17,6 +17,8 @@ public class Casino
     private int rondaActual;
     private int resuldadoDados1;
     private int resuldadoDados2;
+    private int dado1;
+    private int dado2;
     private int jugadorALanzar;
     private String nombreJugador1;
     private String nombreJugador2;
@@ -57,8 +59,8 @@ public class Casino
         rondas.get(rondaActual).
                 añadirLanzamientoRealizadoAJugador(jugadorALanzar);
         
-        int dado1 = (int) (Math.random() * (6-1));
-        int dado2 = (int) (Math.random() * (6-1));
+        dado1 = (int) ((Math.random() * (7-1)) + 1);
+        dado2 = (int) ((Math.random() * (7-1)) + 1);
         
         switch (jugadorALanzar) 
         {
@@ -96,13 +98,20 @@ public class Casino
         //Se guardan  y agregan las mismas configutraciones
         int lanzamientosARealizar = rondas.get(rondaActual).getLanzamientosARealizar();
         
-        rondas.add(new Ronda(nombreJugador1, nombreJugador2));
+        rondas.add(new Ronda(rondas.get(rondaActual).getNombreJugador1(), 
+                rondas.get(rondaActual).getNombreJugador2()));
         
         //Se aumenta la ronda actual
         rondaActual += 1;
         
         //Se establecen los mismos lanzamientos
         rondas.get(rondaActual).setLanzamientosARealizar(lanzamientosARealizar);
+    }
+    
+    public void nuevaRondaDiferente(String _nombreJugador1, String _nombreJugador2)
+    {
+        rondaActual += 1;
+        rondas.add(new Ronda(_nombreJugador1, _nombreJugador2));
     }
     
     public List<Ronda> getRondas() {

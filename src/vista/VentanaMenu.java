@@ -214,8 +214,8 @@ public class VentanaMenu extends JFrame
                 }
                 else
                 {
-                    casino.setNombreJugador1(txtNombre1.getText());
-                    casino.setNombreJugador2(txtNombre2.getText());
+                    casino.nuevaRondaDiferente(txtNombre1.getText(), 
+                            txtNombre2.getText());
                     casino.setLanzamientosARealizar(
                             Integer.parseInt(txtNRondas.getText()));
                 }

@@ -114,6 +114,8 @@ public class VentanaJuego extends JFrame
         ImageIcon iconEncabezado = new ImageIcon(bufferedImagenEncabezado);
         lblEncabezado = new JLabel();
         
+        
+        
         //Se agrega la imagen del encabezado
         lblEncabezado.setIcon(iconEncabezado);
         
@@ -165,10 +167,12 @@ public class VentanaJuego extends JFrame
         String jugadorALanzar;
         switch (casino.getJugadorALanzar()) {
             case 1:
-                jugadorALanzar = casino.getNombreJugador1();
+                jugadorALanzar = casino.getRondas().get(casino.
+                        getRondaActual()).getNombreJugador1();
                 break;
             case 2:
-                jugadorALanzar = casino.getNombreJugador2();
+                jugadorALanzar = casino.getRondas().get(casino.
+                        getRondaActual()).getNombreJugador2();
                 break;
             default:
                 throw new AssertionError();
@@ -182,7 +186,8 @@ public class VentanaJuego extends JFrame
         
         //Parte izquierda
         //NombreJugador1
-        lblNombreJugador1 = new JLabel (casino.getNombreJugador1());
+        lblNombreJugador1 = new JLabel (casino.getRondas().get(casino.
+                getRondaActual()).getNombreJugador1());
         
         //LanzamientosJugador1
         lblLanzamientosJugador1 = new JLabel ("Lanzamientos: " + casino.
@@ -200,7 +205,8 @@ public class VentanaJuego extends JFrame
         
         //Parte Derecha
         //NombreJugador2
-        lblNombreJugador2 = new JLabel (casino.getNombreJugador2());
+        lblNombreJugador2 = new JLabel (casino.getRondas().get(casino.
+                getRondaActual()).getNombreJugador2());
         
         //LanzamientosJugador2
         lblLanzamientosJugador2 = new JLabel ("Lanzamientos: " + casino.
@@ -302,10 +308,12 @@ public class VentanaJuego extends JFrame
                 String jugadorALanzar;
                 switch (casino.getJugadorALanzar()) {
                     case 1:
-                        jugadorALanzar = casino.getNombreJugador1();
+                        jugadorALanzar = casino.getRondas().get(casino.
+                                getRondaActual()).getNombreJugador1();
                         break;
                     case 2:
-                        jugadorALanzar = casino.getNombreJugador2();
+                        jugadorALanzar = casino.getRondas().get(casino.
+                                getRondaActual()).getNombreJugador2();;
                         break;
                     default:
                         throw new AssertionError();
