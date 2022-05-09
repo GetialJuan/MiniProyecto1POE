@@ -346,10 +346,8 @@ public class VentanaJuego extends JFrame
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //Encargada del tiempo
-            lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
-            k++;
-
+            
+            
             
             if(e.getSource() == btnLanzarJugador1 || e.getSource() == btnLanzarJugador2)
             {
@@ -368,7 +366,7 @@ public class VentanaJuego extends JFrame
                     case 2:
                         casino.sumarPuntajeDeLanzamiento1();
                         jugadorALanzar = casino.getRondas().get(casino.
-                                getRondaActual()).getNombreJugador2();;
+                                getRondaActual()).getNombreJugador2();
                         break;
                     default:
                         throw new AssertionError();
@@ -596,6 +594,23 @@ public class VentanaJuego extends JFrame
                     
                 }
                 
+                
+                //MODO CPU
+                String nombreJugador = casino.getRondas().get(casino.getRondaActual()).getNombreJugador2();
+                String nombreCPU = "CPU";
+                
+                if(nombreJugador.equals(nombreCPU)){
+                    System.out.println("Entre a la 1 uwu");
+                    if(btnLanzarJugador2.isEnabled() == true){
+                        System.out.println("ENTRE A LA 2 OWO");
+                        btnLanzarJugador2.doClick();
+                    }
+                }
+                
+            } else {
+                //Encargada del tiempo
+                lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
+                k++;
             }
             
         }

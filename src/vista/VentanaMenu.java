@@ -202,7 +202,12 @@ public class VentanaMenu extends JFrame
         public void actionPerformed(ActionEvent e) {
             
             //Si el btnIniciarJuego es presionado
-            if (e.getSource() == btnIniciarJuego){
+            
+            boolean modoCPU = ((cmbModoDeJuego.getSelectedItem().toString()) == "Jugador vs Jugador") && (txtNombre2.getText().equals("CPU"));
+            modoCPU = !modoCPU;
+            
+            if (e.getSource() == btnIniciarJuego && modoCPU){
+                
                 JOptionPane.showMessageDialog(null, "El juego ha iniciado");
                 
                 frame.dispose();
@@ -239,13 +244,12 @@ public class VentanaMenu extends JFrame
                     default:
                         throw new AssertionError();
                 }
+                
+            } else if (e.getSource() == btnIniciarJuego && modoCPU == false){
+                JOptionPane.showMessageDialog(null, "Por favor, cambia el nombre de Jugador2 por uno diferente a -CPU-");
             }
             
-            
-            
-            
-            
-        }
+        } 
         
     }
 }
