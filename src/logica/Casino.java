@@ -60,20 +60,18 @@ public class Casino
                 añadirLanzamientoRealizadoAJugador(jugadorALanzar);
         
         dado1 = (int) (Math.random() * (7-1)) + 1;
-        System.out.println(dado1);
         dado2 = (int) (Math.random() * (7-1)) + 1;
-        System.out.println(dado2);
         
         switch (jugadorALanzar) 
         {
             case 1:
                 resuldadoDados1 = dado1 + dado2;
-                System.out.println("P1 RES: " + resuldadoDados1);
+                //System.out.println("P1 RES: " + resuldadoDados1);
                 jugadorALanzar = 2;
                 break;
             case 2:
                 resuldadoDados2 = dado1 + dado2;
-                System.out.println("P2 RES: " + resuldadoDados2);
+                //System.out.println("P2 RES: " + resuldadoDados2);
                 jugadorALanzar = 1;
                 break;
             default:

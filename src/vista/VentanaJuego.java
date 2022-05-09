@@ -314,10 +314,12 @@ public class VentanaJuego extends JFrame
         
         
     }
+
+private int contadorLanzamientos = 0;
     
     private class ManejadorDeEventos implements MouseListener, ActionListener
     {
-        private int contadorLanzamientos = 0;
+        
         @Override
         public void mouseClicked(MouseEvent e) {
             
@@ -351,9 +353,11 @@ public class VentanaJuego extends JFrame
             
             if(e.getSource() == btnLanzarJugador1 || e.getSource() == btnLanzarJugador2)
             {
+                    
                 //ENCARGADA DE SUMAR Y EVALUAR PUNTAJES
                 casino.lanzarDados();
-                contadorLanzamientos += 1;
+                contadorLanzamientos = contadorLanzamientos + 1;
+                
                 
                 //Se cambia el juagador a lanzar
                 String jugadorALanzar;
@@ -372,7 +376,7 @@ public class VentanaJuego extends JFrame
                         throw new AssertionError();
                 }
                 
-                //Cada dos lanzamientos se comprueban los puntajes de caja jugador (En caso de empate)
+                //Cada dos lanzamientos se comprueban los puntajes de caja jugador (En caso de empate);
                 if(contadorLanzamientos % 2 == 0)
                 {
                     casino.sumarPuntajesDeLanzamiento();
@@ -442,7 +446,6 @@ public class VentanaJuego extends JFrame
                 
                 int dado1 = casino.getDado1();
                 int dado2 = casino.getDado2();
-                System.out.println(dado1Ruta);
                 
                 //Cambio de imágenes para dado1
                 if (dado1 == 1){
@@ -600,17 +603,16 @@ public class VentanaJuego extends JFrame
                 String nombreCPU = "CPU";
                 
                 if(nombreJugador.equals(nombreCPU)){
-                    System.out.println("Entre a la 1 uwu");
                     if(btnLanzarJugador2.isEnabled() == true){
-                        System.out.println("ENTRE A LA 2 OWO");
                         btnLanzarJugador2.doClick();
                     }
-                }
-                
-            } else {
+                    
+                } else {
                 //Encargada del tiempo
                 lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
                 k++;
+                }
+                
             }
             
         }
