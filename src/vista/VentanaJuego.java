@@ -15,6 +15,8 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -160,7 +162,7 @@ public class VentanaJuego extends JFrame
         lblLanzamientosEmpates.setHorizontalAlignment(SwingConstants.CENTER);
         
         //Dados
-        imagenDado1 = new File(dado1Ruta);
+        imagenDado1 = new File(dado3Ruta);
         BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
         ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
         lblDado1 = new JLabel();
@@ -242,7 +244,7 @@ public class VentanaJuego extends JFrame
             case 2:
                 jugadorALanzar = casino.getRondas().get(casino.
                         getRondaActual()).getNombreJugador2();
-                btnLanzarJugador2.setEnabled(false);
+                btnLanzarJugador1.setEnabled(false);
                 break;
             default:
                 throw new AssertionError();
@@ -344,20 +346,14 @@ public class VentanaJuego extends JFrame
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            //Encargada del tiempo
             lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
             k++;
-            
-            /*
-            if (e.getSource() == btnLanzarJugador1){
-                casino.lanzarDados();
-                contadorLanzamientos += 1;
-                
-                
-            }
-            */
+
             
             if(e.getSource() == btnLanzarJugador1 || e.getSource() == btnLanzarJugador2)
             {
+                //ENCARGADA DE SUMAR Y EVALUAR PUNTAJES
                 casino.lanzarDados();
                 contadorLanzamientos += 1;
                 
@@ -430,6 +426,174 @@ public class VentanaJuego extends JFrame
                 } else if (e.getSource() == btnLanzarJugador2){
                     btnLanzarJugador1.setEnabled(true);
                     btnLanzarJugador2.setEnabled(false);
+                }
+                
+                
+                //ENCARGADA DE CAMBIAR LOS PNG's DE LOS DADOS
+                
+                //Obtenemos la ruta absoluta
+                String rutaArchivo = new File("").getAbsolutePath();
+                
+                //Concatenamos la ruta absoluta de "CasinoUnivalle" con la ruta de todos los .png a utilizar
+                String dado1Ruta = rutaArchivo.concat("\\src\\imagenes\\dado1.png");
+                String dado2Ruta = rutaArchivo.concat("\\src\\imagenes\\dado2.png");
+                String dado3Ruta = rutaArchivo.concat("\\src\\imagenes\\dado3.png");
+                String dado4Ruta = rutaArchivo.concat("\\src\\imagenes\\dado4.png");
+                String dado5Ruta = rutaArchivo.concat("\\src\\imagenes\\dado5.png");
+                String dado6Ruta = rutaArchivo.concat("\\src\\imagenes\\dado6.png");
+                
+                int dado1 = casino.getDado1();
+                int dado2 = casino.getDado2();
+                System.out.println(dado1Ruta);
+                
+                //Cambio de imágenes para dado1
+                if (dado1 == 1){
+                    try {
+                        imagenDado1 = new File(dado1Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado1.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado1 == 2){
+                    try {
+                        imagenDado1 = new File(dado2Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado1.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado1 == 3){
+                    try {
+                        imagenDado1 = new File(dado3Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado1.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado1 == 4){
+                    try {
+                        imagenDado1 = new File(dado4Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado1.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado1 == 5){
+                    try {
+                        imagenDado1 = new File(dado5Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado1.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado1 == 6){
+                    try {
+                        imagenDado1 = new File(dado6Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado1.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                }
+                
+                //Cambio de imágenes para Dado2
+                if (dado2 == 1){
+                    try {
+                        imagenDado1 = new File(dado1Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado2.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado2 == 2){
+                    try {
+                        imagenDado1 = new File(dado2Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado2.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado2 == 3){
+                    try {
+                        imagenDado1 = new File(dado3Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado2.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado2 == 4){
+                    try {
+                        imagenDado1 = new File(dado4Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado2.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado2 == 5){
+                    try {
+                        imagenDado1 = new File(dado5Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado2.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else if (dado2 == 6){
+                    try {
+                        imagenDado1 = new File(dado6Ruta);
+                        BufferedImage bufferedImagenDado1 = ImageIO.read(imagenDado1);
+                        ImageIcon iconDado1 = new ImageIcon(bufferedImagenDado1);
+                        
+                        //Se agrega imagen
+                        lblDado2.setIcon(iconDado1);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
                 }
                 
             }

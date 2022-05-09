@@ -126,6 +126,7 @@ public class Casino
         rondas.add(new Ronda(_nombreJugador1, _nombreJugador2));
     }
     
+    //Getter's
     public List<Ronda> getRondas() {
         return rondas;
     }
@@ -133,6 +134,16 @@ public class Casino
     public int getRondaActual() {
         return rondaActual;
     }
+
+    public int getDado1() {
+        return dado1;
+    }
+
+    public int getDado2() {
+        return dado2;
+    }
+    
+    
     
     //Setters
     public void setNombreJugador1(String nombreJugador1)
