@@ -607,12 +607,12 @@ private int contadorLanzamientos = 0;
                         btnLanzarJugador2.doClick();
                     }
                     
-                } else {
+                } 
+                
+            } else {
                 //Encargada del tiempo
                 lblTiempo.setText("Tiempo transcurrido: " + String.valueOf(k) + " segundos");
                 k++;
-                }
-                
             }
             
         }
