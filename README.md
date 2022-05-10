@@ -35,7 +35,7 @@ Por último, puedes escoger si deseas una nueva ronda con las mismas configuraci
 ## Autores:
 Este proyecto fue hecho por:
 - Sebastián Idrobo Avirama (2122637-3743)
-- Juan Sebastián Getial (...)
+- Juan Sebastián Getial Getial (2124644-3743)
 
 ![Logotipo de la Universidad del Valle](https://www.univalle.edu.co/images/Univalle/70_Rojo.jpg)
 
