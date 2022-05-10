@@ -51,7 +51,15 @@ public class Casino
         rondas.add(new Ronda(nombreJugador1, nombreJugador2));
         rondaActual = 0;
         rondas.get(rondaActual).setLanzamientosARealizar(lanzamientosARealizar);
-        jugadorALanzar = (int) (Math.random() * (3-1)) + 1;
+        System.out.println(nombreJugador2);
+        if(!nombreJugador2.equals("CPU"))
+        {
+            jugadorALanzar = (int) (Math.random() * (3-1)) + 1;
+        }
+        else
+        {
+            jugadorALanzar = 1;
+        }
     }
     
     public void lanzarDados()
@@ -116,12 +124,14 @@ public class Casino
         
         //Se establecen los mismos lanzamientos
         rondas.get(rondaActual).setLanzamientosARealizar(lanzamientosARealizar);
+        setJugadorALanzar();
     }
     
     public void nuevaRondaDiferente(String _nombreJugador1, String _nombreJugador2)
     {
         rondaActual += 1;
         rondas.add(new Ronda(_nombreJugador1, _nombreJugador2));
+        setJugadorALanzar();
     }
     
     //Getter's
@@ -173,5 +183,17 @@ public class Casino
         }
         
         return rondaRecord;
+    }
+    
+    public void setJugadorALanzar()
+    {
+        if(!rondas.get(getRondaActual()).getNombreJugador2().equals("CPU"))
+        {
+            jugadorALanzar = (int) (Math.random() * (3-1)) + 1;
+        }
+        else
+        {
+            jugadorALanzar = 1;
+        }
     }
 }
