@@ -30,7 +30,8 @@ import logica.Casino;
 
 /**
  *
- * @author Juan
+ * @author Sebastian Idrovo Avirama <>
+ * Clase que representa la ventana del juego de dados
  */
 public class VentanaJuego extends JFrame 
 {
@@ -317,35 +318,8 @@ public class VentanaJuego extends JFrame
 
 private int contadorLanzamientos = 0;
     
-    private class ManejadorDeEventos implements MouseListener, ActionListener
+    private class ManejadorDeEventos implements ActionListener
     {
-        
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            ///throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
         @Override
         public void actionPerformed(ActionEvent e) {
             

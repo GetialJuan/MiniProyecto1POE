@@ -21,7 +21,8 @@ import logica.Casino;
 
 /**
  *
- * @author Juan
+ * @author Juan Sebastian Getial Getial <getial.juan@correounivalle.edu.co>
+ * Clase que representa la ventana final del juego de dados
  */
 public class VentanaFinal extends JFrame 
 {

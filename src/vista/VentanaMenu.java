@@ -27,12 +27,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.text.MaskFormatter;
 import logica.Casino;
 
 /**
  *
- * @author Juan
+ * @author Juan Sebastian Getial <getial.juan@correounivalle.edu.co>
+ * @author Sebastian Idrovo Avirama <>
+ * Clase que representa la ventana del menu del juego de dados
  */
 public class VentanaMenu extends JFrame
 {
@@ -67,6 +68,7 @@ public class VentanaMenu extends JFrame
         
     }
     
+    //Constructoe que recibe un casino
     public VentanaMenu(Casino casino) throws IOException, ParseException
     {
         this.casino = casino;
@@ -153,64 +155,24 @@ public class VentanaMenu extends JFrame
         
     }
     
-    private class ManejadorDeEventos implements MouseListener, ActionListener
+    private class ManejadorDeEventos implements ActionListener
     {
-        public void habilitarNombre2()
-        {
-            switch (cmbModoDeJuego.getSelectedItem().toString()) 
-            {
-                case "Solitario":
-                    txtNombre2.setEnabled(false);
-                    break;
-                case "Jugador vs Jugador":
-                    txtNombre2.setEnabled(true);
-                    break;
-                default:
-                    throw new AssertionError();
-            }
-            //if(cmbModoDeJuego.getSelectedItem().toString() == "Solitario")
-                
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) 
-        {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            //Si el btnIniciarJuego es presionado
             
+            //Variable que indicara si no se ha cambiado el nombre del jugador 2
             boolean modoCPU = ((cmbModoDeJuego.getSelectedItem().toString()) == "Jugador vs Jugador") && (txtNombre2.getText().equals("CPU"));
             modoCPU = !modoCPU;
             
+            //Si el btnIniciarJuego es presionado
             if (e.getSource() == btnIniciarJuego && modoCPU){
                 
                 JOptionPane.showMessageDialog(null, "El juego ha iniciado");
                 
                 frame.dispose();
+                //Se verifica si hay o no un casino
                 if(casino == null)
                 {
                     casino = new Casino(txtNombre1.getText(), 
@@ -225,12 +187,14 @@ public class VentanaMenu extends JFrame
                             Integer.parseInt(txtNRondas.getText()));
                 }
                 
+                //Se crea la ventana del juego
                 try {
                     VentanaJuego ventanaJuego = new VentanaJuego(casino); 
                 } catch (IOException ex) {
                     Logger.getLogger(VentanaMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //Si cmbModoDeJuego es presionado
+                
+            //Si cmbModoDeJuego es presionado
             } else if (e.getSource() == cmbModoDeJuego){
                 switch (cmbModoDeJuego.getSelectedItem().toString()) 
                 {

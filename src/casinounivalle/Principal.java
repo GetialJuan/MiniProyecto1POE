@@ -9,17 +9,21 @@ import java.text.ParseException;
 import vista.VentanaMenu;
 
 /**
- *
- * @author Juan
+ * MINIPROYECTO 1 - CasinoUnivalle
+ * @author Juan Sebastian Getial <getial.juan@correounivalle.edu.co>
+ * @author Sebastian Idrovo Avirama <>
+ * @profesor 
+ * Clase principal
  */
 //sdsdsd
 public class Principal {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
+     * @throws java.text.ParseException
      */
     
-    //Holis
     public static void main(String[] args) throws IOException, ParseException {
         VentanaMenu menu = new VentanaMenu();
     }
