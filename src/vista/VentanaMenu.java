@@ -44,14 +44,14 @@ public class VentanaMenu extends JFrame
     private Container contenedorPrincipal;
     private JLabel encabezado;
     private JLabel lblModoDeJuego;
-    private JLabel lblNRondas;
+    private JLabel lblNLanzamientos;
     private JLabel lblNombre1;
     private JLabel lblNombre2;
     private JComboBox cmbModoDeJuego;
-    private JPanel pnlNRondas;
+    private JPanel pnlNLanzamientos;
     private JPanel pnlModoDeJuego;
     private JPanel pnlNombres;
-    private JTextField txtNRondas;
+    private JTextField txtNLanzamientos;
     private JTextField txtNombre1;
     private JTextField txtNombre2;
     private JButton btnIniciarJuego;
@@ -113,13 +113,13 @@ public class VentanaMenu extends JFrame
         pnlModoDeJuego.add(cmbModoDeJuego);
         
         //Se cre la seccon de n Rondas
-        pnlNRondas = new JPanel();
-        pnlNRondas.setLayout(new GridLayout(1,2));
-        lblNRondas = new JLabel("Escriba el numero de rondas : ");
-        lblNRondas.setHorizontalAlignment(SwingConstants.CENTER);
-        txtNRondas = new JTextField("10");
-        pnlNRondas.add(lblNRondas);
-        pnlNRondas.add(txtNRondas);
+        pnlNLanzamientos = new JPanel();
+        pnlNLanzamientos.setLayout(new GridLayout(1,2));
+        lblNLanzamientos = new JLabel("Escriba el numero de rondas : ");
+        lblNLanzamientos.setHorizontalAlignment(SwingConstants.CENTER);
+        txtNLanzamientos = new JTextField("10");
+        pnlNLanzamientos.add(lblNLanzamientos);
+        pnlNLanzamientos.add(txtNLanzamientos);
         
         //Se crea la nombres de Juagadores
         lblNombre1 = new JLabel("Nombre del Jugador 1");
@@ -146,7 +146,7 @@ public class VentanaMenu extends JFrame
         contenedorPrincipal.setLayout(new GridLayout(5,1));
         contenedorPrincipal.add(encabezado);
         contenedorPrincipal.add(pnlModoDeJuego);
-        contenedorPrincipal.add(pnlNRondas);
+        contenedorPrincipal.add(pnlNLanzamientos);
         contenedorPrincipal.add(pnlNombres);
         contenedorPrincipal.add(btnIniciarJuego);
         
@@ -177,14 +177,13 @@ public class VentanaMenu extends JFrame
                 {
                     casino = new Casino(txtNombre1.getText(), 
                             txtNombre2.getText(), 
-                    Integer.parseInt(txtNRondas.getText()));
+                    Integer.parseInt(txtNLanzamientos.getText()));
                 }
                 else
                 {
                     casino.nuevaRondaDiferente(txtNombre1.getText(), 
                             txtNombre2.getText());
-                    casino.setLanzamientosARealizar(
-                            Integer.parseInt(txtNRondas.getText()));
+                    casino.setLanzamientosARealizar(Integer.parseInt(txtNLanzamientos.getText()));
                 }
                 
                 //Se crea la ventana del juego
