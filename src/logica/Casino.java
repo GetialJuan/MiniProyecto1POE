@@ -10,6 +10,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Juan Sebastian Getial Getial <getial.juan@correounivalle.edu.co>
+ * @author Sebastian Idrovo Avirama <idrobo.sebastian@correounivalle.edu.co>
  * Clase que representa la logica del casino (juego de dados)
  */
 public class Casino 

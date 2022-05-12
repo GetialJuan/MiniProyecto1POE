@@ -7,6 +7,7 @@ package logica;
 /**
  *
  * @author Juan Sebastian Getial Getial <getial.juan@correounivalle.edu.co>
+ * @author Sebastian Idrovo Avirama <idrobo.sebastian@correounivalle.edu.co>
  * Clase que representa una ronda del juego de dados
  */
 public class Ronda 

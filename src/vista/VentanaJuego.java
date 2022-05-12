@@ -30,7 +30,8 @@ import logica.Casino;
 
 /**
  *
- * @author Sebastian Idrovo Avirama <>
+ * @author Sebastian Idrovo Avirama <idrobo.sebastian@correounivalle.edu.co>
+ * @author Juan Sebastian Getial <getial.juan@correounivalle.edu.co>
  * Clase que representa la ventana del juego de dados
  */
 public class VentanaJuego extends JFrame 
