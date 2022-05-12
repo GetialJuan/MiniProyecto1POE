@@ -12,7 +12,7 @@ import vista.VentanaMenu;
  * MINIPROYECTO 1 - CasinoUnivalle
  * @author Juan Sebastian Getial <getial.juan@correounivalle.edu.co>
  * @author Sebastian Idrovo Avirama <idrobo.sebastian@correounivalle.edu.co>
- * @profesor 
+ * @profesor Luis Yovany Romo Portilla
  * Clase principal
  */
 public class Principal {
