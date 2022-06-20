@@ -1,2 +1,2 @@
 # CasinoUnivalle
-Mini 1
+Dirigirse a la rama "Master" para ver el código del proyecto 👍
